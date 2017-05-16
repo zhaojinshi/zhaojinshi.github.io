@@ -95,32 +95,35 @@
                 <div class="jinengbt">
                     <h1>我的技能<span>|</span>SKILL</h1>
                 </div>
-                <div class="neirong clear">
-                    <ul class="col-lg-1">
-                        <li>PS:</li>
-                        <li>AI:</li>
-                        <li>HTML:</li>
-                        <li>JS:</li>
-                        <li>Jquery:</li>
-                    </ul>
-                    <div class="jindu col-lg-11">
-                        <div class="jindutiao">
-                            <div class="chengdu1 col-lg-10"></div>
-                        </div>
-                        <div class="jindutiao">
-                            <div class="chengdu1 col-lg-9"></div>
-                        </div>
-                        <div class="jindutiao">
-                            <div class="chengdu1 col-lg-11"></div>
-                        </div>
-                        <div class="jindutiao">
-                            <div class="chengdu1 col-lg-8"></div>
-                        </div>
-                        <div class="jindutiao">
-                            <div class="chengdu1 col-lg-6"></div>
-                        </div>
+
+                <div class="skills clear">
+                    <div class="skill1 skill2">
+                        <canvas width="200px" height="200px" class="skill"></canvas>
+                        <h3 class="html">PS AI</h3>
+                    </div>
+                    <div class="skill1 skill3">
+                        <canvas width="200px" height="200px" class="skillj"></canvas>
+                        <h3 class="html">HTML</h3>
+                    </div>
+                    <div class="skill1 skill4">
+                        <canvas width="200px" height="200px" class="skillq"></canvas>
+                        <h3 class="html">CSS3</h3>
+                    </div>
+                    <div class="skill1 skill5">
+                        <canvas width="200px" height="200px" class="skillp"></canvas>
+                        <h3 class="html">JS</h3>
+                    </div>
+                    <div class="skill1 skill6">
+                        <canvas width="200px" height="200px" class="skillz"></canvas>
+                        <h3 class="html">JQUERY</h3>
+                    </div>
+                    <div class="skill1 skill7">
+                        <canvas width="200px" height="200px" class="skillh"></canvas>
+                        <h3 class="html">PHP</h3>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -244,6 +247,7 @@
 </div>
 </body>
 <script src="js/jquery.js"></script>
+<script src="js/jquery.transit.js"></script>
 <script src="js/jquery.fullPage.js"></script>
 <script src="js/jquery.easing.min.js"></script>
 <script>
@@ -260,10 +264,10 @@
             menu:"#menu",
             afterLoad:function (anchorLink,index) {
                 if(index==2){
-                $(".p1biao").animate({left:0},1000,"easeInOutElastic");
-                $(".p2biao").animate({left:27},2000,"easeInOutElastic");
-                $(".p3biao").animate({left:67},3000,"easeInOutElastic");
-                $(".myping h5").animate({right:545},1000,"easeOutBounce");
+                $(".p1biao").transition({left:0},1000);
+                $(".p2biao").transition({left:27},2000);
+                $(".p3biao").transition({left:67},3000);
+                $(".myping h5").transition({right:71+"%"},1000);
                 $(".guanyuyou ul li").css("animation","bounceIn 3s");
                 $(".pkuai").css("animation","bounceIn 3s");
                 }
@@ -271,6 +275,225 @@
                     $(".next").css("transform","rotate(-180deg)").addClass("active")
                 }else{
                     $(".next").css("transform","rotate(0deg)").removeClass("active")
+                }
+                if(index==3){
+                    $(".skill2").transition({marginTop:0},1000);
+                    $(".skill3").transition({marginTop:0},1000);
+                    $(".skill4").transition({marginTop:0},1000);
+                    $(".skill5").transition({marginTop:0},2000);
+                    $(".skill6").transition({marginTop:0},2000);
+                    $(".skill7").transition({marginTop:0},2000);
+                    {
+                        let canvas=$(".skill")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("70%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=70*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=5;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+                    {
+                        let canvas=$(".skillj")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("90%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=90*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=5;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+                    {
+                        let canvas=$(".skillq")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("87%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=87*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=5;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+                    {
+                        let canvas=$(".skillp")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("80%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=80*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=3;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+                    {
+                        let canvas=$(".skillz")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("80%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=80*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=3;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+                    {
+                        let canvas=$(".skillh")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(100,100);
+                        cobj.lineWidth=8;
+                        cobj.strokeStyle="rgb(255,120,19)";
+                        cobj.beginPath();
+                        // cobj.arc(0,0,100,-Math.PI/2,1.3*Math.PI);
+                        // cobj.stroke();
+                        cobj.font="24px 微软雅黑";
+                        cobj.textAlign="center";
+                        cobj.textBaseline="middle";
+                        cobj.fillStyle="#fff";
+                        cobj.fillText("75%",0,0);
+                        function atr(deg){
+                            return Math.PI*deg/180;
+                        }
+                        let angle=0;
+                        let maxangle=75*0.01*360;
+                        let f;
+                        function progress(){
+                            angle+=3;
+                            cobj.clearRect(-250,-250,500,500);
+                            cobj.beginPath();
+                            cobj.arc(0,0,80,-atr(90),atr(angle-90));
+                            cobj.stroke();
+                            cobj.fillText(Math.floor(angle/360*100)+"%",0,0);
+                            if(angle>maxangle){
+                                cancelAnimationFrame(f);
+                            }else{
+                                f=requestAnimationFrame(progress);
+                            }
+                        }
+                        progress();
+                    }
+
                 }
             },
             onLeave:function (index) {
@@ -281,6 +504,45 @@
                 $(".myping h5").animate({right:-500});
                 $(".guanyuyou ul li").css("animation","bounceOut 3s");
                 $(".pkuai").css("animation","bounceOut 3s");
+
+                }
+                if(index==3){
+                    $(".skill2").transition({marginTop:-500});
+                    $(".skill3").transition({marginTop:-500});
+                    $(".skill4").transition({marginTop:-500});
+                    $(".skill5").transition({marginTop:700});
+                    $(".skill6").transition({marginTop:700});
+                    $(".skill7").transition({marginTop:700});
+                    {
+                        let canvas=$(".skill")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
+                    {
+                        let canvas=$(".skillj")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
+                    {
+                        let canvas=$(".skillq")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
+                    {
+                        let canvas=$(".skillp")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
+                    {
+                        let canvas=$(".skillz")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
+                    {
+                        let canvas=$(".skillh")[0];
+                        let cobj=canvas.getContext("2d");
+                        cobj.translate(-100,-100);
+                    }
 
                 }
             },
@@ -359,6 +621,10 @@
                 })
             })
         });
+
+
+
+
 
     })
 

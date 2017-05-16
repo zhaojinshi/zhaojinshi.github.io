@@ -244,38 +244,61 @@ label{
 .jinengbt{
     /*width: 16%;*/
     /*border-bottom: 1px solid #4c4c4c;*/
-    margin-bottom: 50px;
-}
-.jineng h1{
-    /*font-size: 25px;*/
-    color: #fff;
-    margin-bottom:200px;
-    text-align: center;
-    margin-top: -120px;
-}
-.jindu{
-    float: left;
-}
-.jindutiao{
-    /*width: 800px;*/
-    height: 10px;
-    background:#fff;
-    margin-bottom: 40px;
-    margin-left: 20px;
-}
-.chengdu1{
-    background: red;
-    width: 800px;
-    height: 10px;
-    margin-bottom: 40px;
-}
-.neirong ul li{
-    margin-bottom: 30px;
-    color:#fff;
+    /*margin-bottom: 50px;*/
 }
 .jineng{
-    padding-top: 200px;
+    overflow: hidden;
 }
+.jineng h1{
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+/*进度*/
+.skills{
+    margin-top: 30px;
+    width:100%;
+    flex-grow:1;
+    /*background: pink;*/
+}
+.skill1{
+    width:33.3%;
+    float:left;
+    padding-top: 60px;
+}
+.skill2{
+    margin-top: -500px;
+}
+.skill3{
+    margin-top: -500px;
+}
+.skill4{
+    margin-top: -500px;
+}
+.skill5{
+    margin-top: 700px;
+}
+.skill6{
+    margin-top: 700px;
+}
+.skill7{
+    margin-top: 700px;
+}
+canvas{
+    display: block;
+    margin:0 auto;
+}
+.skill1 h3{
+    width:100%;
+    text-align: center;
+    color:#fff;
+    font-weight: 600;
+    margin-top: 20px;
+}
+/*结束*/
+
+
+
 .slide h1{
     text-align: center;
     color: #f8ffc2;
@@ -409,8 +432,8 @@ label{
     height: 120px;
     font-size: 25px;
     position: absolute;
-    top: 134px;
-    left: 308px;
+    top: 18%;
+    left: 20%;
     color: #FBC944;
 }
 .p1biao{
@@ -430,8 +453,8 @@ label{
 }
 .neikuan>.guanyuyou1{
     position: absolute;
-    top: 369px;
-    left: 221px;
+    top: 48%;
+    left: 13%;
 }
 .neikuan>.guanyuyou1>ul>li{
     width: 150px;
@@ -447,8 +470,8 @@ label{
 
 .neikuan>.guanyuyou2{
     position: absolute;
-    top: 369px;
-    left: 500px;
+    top: 48%;
+    left:31%;
 }
 .neikuan>.guanyuyou2>ul>li{
     width: 200px;
@@ -465,8 +488,8 @@ label{
     position: absolute;
     top: 417px;
     right: 20px;
-    width: 765px;
-    height: 231px;
+    width: 50%;
+    height: 31%;
 }
 .myping h5{
     position: absolute;
@@ -480,8 +503,8 @@ label{
     top: 35px;
     left: 30px;
     border: 2px solid #BB2024;
-    width: 732px;
-    height: 199px;
+    width: 95%;
+    height: 80%;
 }
 .myping .pkuai p{
     color:#000;

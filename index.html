@@ -1,10 +1,368 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sgh.css">
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
 </head>
 <body>
-	<div class="box">111</div>
+<div class="caidan iconfont iconfont2">&#xe605;</div>
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1">首页</a></li>
+    <li data-menuanchor="page2"><a href="#page2">个人信息</a></li>
+    <li data-menuanchor="page3"><a href="#page3">个人技能</a></li>
+    <li data-menuanchor="page4"><a href="#page4">作品展示</a></li>
+    <li data-menuanchor="page5"><a href="#page5">联系方式</a></li>
+</ul>
+<div id="fullpage">
+    <div class="section box1">
+        <div class="box1z">
+            <div class="wenzi">
+                <p>Welcome to personal homepage</p>
+                <p>测试是来表明bug的存在而不是不存在</p>
+                <p>我是前端工程师</p>
+            </div>
+        </div>
+        <div class="next iconfont iconfont3">&#xe602;</div>
+    </div>
+    <div class="section box2">
+        <div class="neikuan">
+                <div class="zi">
+                    About   me
+                </div>
+                <div class="zixia">
+                    <p class="p1biao">人生最大的遗憾</p>
+                    <p class="p2biao">不是拥有无法实现的梦想</p>
+                    <p class="p3biao">而是没有尝试着去实现它</p>
+                </div>
+                <div class="guanyuyou guanyuyou1 col-lg-3 col-sm-6">
+                    <ul>
+                        <li>NAME</li>
+                        <li>D—O—B</li>
+                        <li>E-mail</li>
+                        <li>hobby</li>
+                        <!--<li>Self-evaluation</li>-->
+                    </ul>
+                </div>
+                <div class="guanyuyou guanyuyou2 col-lg-3 col-sm-6">
+                    <ul>
+                        <li>赵晋世</li>
+                        <li>20/04/1994</li>
+                        <li>1163612848@qq.com</li>
+                        <li>球类,游泳,旅游</li>
+                    </ul>
+                </div>
+                <div class="myping">
+                    <h5>Self-evaluation</h5>
+                    <div class="pkuai"><p>忠实诚信,讲原则，说到做到，决不推卸责任;有自制力，做事情始终坚持有始有终，从不半途而废;肯学习,有问题不逃避,愿意虚心向他人学习;自信但不自负,不以自我为中心;愿意以谦虚态度赞扬接纳优越者,权威者;会用100%的热情和精力投入到工作中;平易近人。为人诚恳,性格开朗,积极进取,适应力强、勤奋好学、脚踏实地，有较强的团队精神,工作积极进取,态度认真。</p></div>
+                </div>
+                <div class="xinqing">
+                    <h1>你若安好</h1>
+                    <h1>我便晴天</h1>
+                </div>
+                <div class="change">
+                    <label class="label1"><input type="button" value="切换城市" id="toggle"></label>
+                    <label class="area">省：
+                        <select id="province">
+                            <option>请选择省份</option>
+                        </select>
+                        市：<select id="city" value="">
+                            <option>请选择市区</option>
+                        </select>
+                    </label>
+                </div>
+                <table class="table1">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>时间</th>
+                        <th>天气</th>
+                        <th>温度</th>
+                        <th>风力</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tianqi">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <div class="section box3">
+        <div class="jineng">
+            <div class="neikuan">
+                <div class="jinengbt">
+                    <h1>我的技能<span>|</span>SKILL</h1>
+                </div>
+                <div class="neirong clear">
+                    <ul class="col-lg-1">
+                        <li>PS:</li>
+                        <li>AI:</li>
+                        <li>HTML:</li>
+                        <li>JS:</li>
+                        <li>Jquery:</li>
+                    </ul>
+                    <div class="jindu col-lg-11">
+                        <div class="jindutiao">
+                            <div class="chengdu1 col-lg-10"></div>
+                        </div>
+                        <div class="jindutiao">
+                            <div class="chengdu1 col-lg-9"></div>
+                        </div>
+                        <div class="jindutiao">
+                            <div class="chengdu1 col-lg-11"></div>
+                        </div>
+                        <div class="jindutiao">
+                            <div class="chengdu1 col-lg-8"></div>
+                        </div>
+                        <div class="jindutiao">
+                            <div class="chengdu1 col-lg-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section box4">
+        <div class="slide">
+            <h1>网页</h1>
+            <ul class="clear">
+                <li>
+                    <a href="京东官网/京东.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>京东官网</h5>
+                </li>
+                <li>
+                    <a href="小米官网/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>小米官网</h5>
+                </li>
+                <li>
+                    <a href="银泰官网/yingtai.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>银泰官网</h5>
+                </li>
+                <li>
+                    <a href="沙发网/沙发网.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>沙发官网</h5>
+                </li>
+                <li>
+                    <a href="天猫官网/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>天猫官网</h5>
+                </li>
+                <li>
+                    <a href="中国移动/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>中国移动官网</h5>
+                </li>
+                <li>
+                    <a href="苹果网站/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>苹果官网</h5>
+                </li>
+                <li>
+                    <a href="天猫手机端/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>移动端天猫官网</h5>
+                </li>
+                <li>
+                    <a href="凡客官网/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>凡客官网</h5>
+                </li>
+                <li>
+                    <a href="俱乐部/index.html"><img src="img/8.jpg" alt=""></a>
+                    <h5>ss超跑俱乐部</h5>
+                </li>
+
+            </ul>
+        </div>
+        <div class="slide">
+            <h1>游戏</h1>
+            <ul class="clear">
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+            </ul>
+        </div>
+        <div class="slide">
+            <h1>其他</h1>
+            <ul class="clear">
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+                <li>
+                    <a href=""><img src="img/8.jpg" alt=""></a>
+                    <h5>京东</h5>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="waikuan1">
+            <div class="neikuan">
+                <div class="dibu">
+                    <h1><a name="lx">CONTACT ME</a></h1>
+                </div>
+                <div class="dibuzi">
+                    <h1>Lorem ipsum dolor sit amet, consectetu adipiscing elit. Duis sed leo necornarediamcommodo nibh ante facilisis.</h1>
+                </div>
+                <div class="tubiaobox clear">
+                    <div class="tubiao col-lg-4 col-sm-12">
+                        <div class="iconfont iconfont1">&#xe60a;</div>
+                        <h1>321 Awesome Street
+                            New York, NY 17022</h1>
+                    </div>
+                    <div class="tubiao col-lg-4 col-sm-12">
+                        <div class="iconfont iconfont1">&#xe616;</div>
+                        <h1>info@companyname.com</h1>
+                    </div>		<div class="tubiao col-lg-4 col-sm-12">
+                    <div class="iconfont iconfont1">&#xe600;</div>
+                    <h1>+1 800 123 1234</h1>
+                </div>
+                </div>
+                <div class="lianxi">
+                    <h1>LEAVE ME A MESSAGE</h1>
+                </div>
+                <div class="dibudak clear">
+                    <div class="dibuk">name</div>
+                    <div class="dibuk"></div>
+                    <div class="dibuk2"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.fullPage.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script>
+    $(function(){
+        $('#fullpage').fullpage({
+            'verticalCentered': false,
+            'css3': true,
+//            'sectionsColor': ['#254875', '#00FF00', '#254587', '#D9DBDA', '#143EEA'],
+            anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+            slidesNavigation:true,
+            loopHorizontal:false,
+//            continuousVertical:true,
+            fixedElements:".next",
+            menu:"#menu",
+            afterLoad:function (anchorLink,index) {
+                if(index==2){
+                $(".p1biao").animate({left:0},1000,"easeInOutElastic");
+                $(".p2biao").animate({left:27},2000,"easeInOutElastic");
+                $(".p3biao").animate({left:67},3000,"easeInOutElastic");
+                $(".myping h5").animate({right:545},1000,"easeOutBounce");
+                $(".guanyuyou ul li").css("animation","bounceIn 3s");
+                $(".pkuai").css("animation","bounceIn 3s");
+                }
+                if(index==5){
+                    $(".next").css("transform","rotate(-180deg)").addClass("active")
+                }else{
+                    $(".next").css("transform","rotate(0deg)").removeClass("active")
+                }
+            },
+            onLeave:function (index) {
+                if(index==2){
+                $(".p1biao").animate({left:-600});
+                $(".p2biao").animate({left:-600});
+                $(".p3biao").animate({left:-600});
+                $(".myping h5").animate({right:-500});
+                $(".guanyuyou ul li").css("animation","bounceOut 3s");
+                $(".pkuai").css("animation","bounceOut 3s");
+
+                }
+            },
+        });
+        
+        $(".next").click(function () {
+            if($(this).hasClass("active")){
+                $.fn.fullpage.moveTo(1);
+            }else{
+                $.fn.fullpage.moveSectionDown();
+            }
+
+        })
+
+
+
+            setInterval(function () {
+                $(".wenzi").animate({top:-200},1000,function () {
+                    $(".wenzi").find("p").eq(0).appendTo(".wenzi");
+                    $(".wenzi").css("top",0)
+                })
+            },3000);
+
+        $(".caidan").click(function () {
+            $("#menu").slideToggle(500)
+        });
+
+
+        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
+            var city = remote_ip_info.city;
+            update(city);
+        });
+        function update(city) {
+            $(".cityname").html(city);
+            $.get("https://free-api.heweather.com/v5/weather", {
+                city: city,
+                key: "6bf94f1cdfe74ca89cd5b211c8e3ce63"
+            }, function (r) {
+                $(".tianqi").empty();
+                var obj = r.HeWeather5[0].daily_forecast;
+                var arr=["今天","明天","后天"];
+                $.each(obj, function (index, value) {
+                    $("<tr>").html(function () {
+                        return "<td>"+arr[index]+"</td><td>"+value.date+"</td><td>"+value.cond.txt_n+"</td><td>"+value.tmp.min+"℃"+"~"+value.tmp.max+"℃"+"</td><td>"+value.wind.sc+"</td>"
+                    }).appendTo(".tianqi");
+                });
+            })
+        }
+
+        $("#toggle").click(function () {
+            $(".area").slideToggle();
+        }).one("click", function () {
+            $.getJSON("js/citys.json",function (r) {
+                var province = {};
+                $.each(r, function (index, value) {
+                    if (!province[value.provinceZh]) {
+                        province[value.provinceZh] = [];
+                    }
+                    province[value.provinceZh].push(value.cityZh);
+                });
+                $.each(province,function (index) {
+                    $("<option>").text(index).val(index).appendTo("#province")
+                });
+                $("#province").change(function () {
+                    var val=$(this).val();
+                    var citys=province[val];
+                    $("#city").html("<option>请选择市区</option>");
+                    $.each(citys,function (i,v) {
+                        $("<option>").text(v).val(v).appendTo("#city")
+                    })
+                });
+                $("#city").change(function () {
+                    if($(this).val()!=""){
+                        update($(this).val())
+                    }
+                })
+            })
+        });
+
+    })
+
+
+
+</script>
 </html>

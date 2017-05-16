@@ -1,0 +1,25 @@
+
+h1,h2,h3,h4,h5,h6,p,ul,li,ol,dl,dd,dt,form,input,textarea,pre,figure{
+    margin:0;
+    padding: 0;
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    border:0;
+}
+i,u,del,b{
+    font-style: normal;
+    text-decoration: none;
+    font-weight: normal;
+}
+body{
+    font-family:Verdana,simsun,Sans-Serif;
+    color:#666;
+    margin:0;
+}
+*{
+    box-sizing: border-box;
+}

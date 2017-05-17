@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            margin: 0 auto;
+            width:1000px;
+            height:500px;
+            border: 1px solid #000;
+        }
+        .wenzi{
+            float: left;
+            padding: 0 105px;
+            text-align: center;
+            line-height: 50px;
+
+        }
+        form{
+            overflow: hidden;
+            background: pink;
+            height:50px;
+        }
+        select{
+            height:28px;
+        }
+        .conent{
+           padding: 30px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="" name="myform">
+            <div class="wenzi">
+            <span>文字大小</span>
+            <select name="fontsize">
+                <option>12px</option>
+                <option>14px</option>
+                <option>16px</option>
+                <option>18px</option>
+                <option>20px</option>
+                <option>30px</option>
+            </select>
+            </div>
+            <div class="wenzi">
+            <span>字体</span>
+            <select name="fontfamily">
+                <option>宋体</option>
+                <option>楷体</option>
+                <option>仿宋</option>
+                <option>苹方</option>
+            </select>
+            </div>
+            <div class="wenzi">
+            <span>文字颜色</span>
+            <input type="color" name="color">
+            </div>
+        </form>
+        <div class="conent">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</div>
+    </div>
+</body>
+<script src="function.js"></script>
+<script>
+    let fontsize=document.querySelector("[name=fontsize]");
+    let fontfamily=document.querySelector("[name=fontfamily]");
+    let color=document.querySelector("[name=color]");
+    let conent=document.querySelector(".conent");
+
+    fontsize.onchange=function () {
+        let fs=this.value;
+        conent.style.fontSize=fs;
+        addCookie("fontsize",fs);
+    };
+    if(getCookie("fontsize")){
+        fontsize.value=getCookie("fontsize");
+        fontsize.onchange();
+    }
+    fontfamily.onchange=function () {
+        let ff=this.value;
+        conent.style.fontFamily=ff;
+        addCookie("fontfamily",ff);
+    };
+    if(getCookie("fontfamily")){
+        fontfamily.value=getCookie("fontfamily");
+        fontfamily.onchange();
+    }
+    color.onchange=function () {
+        let c=this.value;
+        conent.style.color=c;
+        addCookie("color",c);
+    }
+    if(getCookie("color")){
+        color.value=getCookie("color");
+        color.onchange();
+    }
+
+
+</script>
+</html>

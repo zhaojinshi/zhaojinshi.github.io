@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes move{
+            0%{
+                transform:translateX(0);
+            }
+            25%{
+                transform:translateX(-30px);
+            }
+            50%{
+                transform:translateX(0px);
+            }
+            75%{
+                transform:translateX(30px);
+            }
+            100%{
+                transform:translateX(0);
+            }
+        }
+        @keyframes rotate{
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body,html{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            color:#fff;
+            font-size: 24px;
+            font-family:"微软雅黑";
+            font-weight:bold;
+            text-shadow:0px 0px 5px #000;
+        }
+        .music{
+            width:50px;height:50px;
+            border-radius: 50%;
+            background:url(img/music.png) no-repeat center;
+            position: absolute;
+            right:100px;top:10px;
+            z-index:9999;
+            background-color:#FEC743;
+            border:3px solid #fff;
+            animation:rotate 3s linear infinite;
+            cursor:pointer;
+        }
+        .paitubiao{
+            width:50px;height:50px;
+            border-radius: 50%;
+            background:url(images2/pai.jpg) no-repeat center;
+            position: absolute;
+            background-size: 52px 52px;
+            left:100px;top:10px;
+            z-index:9999;
+            border:3px solid #fff;
+            cursor:pointer;
+        }
+        .paineirong{
+            display: none;
+            position: absolute;
+            width:280px;
+            height:150px;
+            padding: 10px 0px;
+            background:rgba(16,98,94,.8);
+            top:67px;
+            left:27px;
+            z-index: 9999;
+        }
+        .paineirong li{
+            margin-top: 10px;
+        }
+        .paineirong li span{
+            margin-left: 20px;
+        }
+        .scene{
+            width:100%;
+            height:100%;
+            position:absolute;
+            background-image:url(images2/bg.jpg);
+            background-size:100% 100%;
+            overflow:hidden;
+        }
+        .startBox{
+            width:608px;
+            height:400px;
+            position:absolute;
+            left:0;right:0;top:0;bottom:0;
+            margin:auto;
+            animation:move 3s linear infinite;
+        }
+        .choose,.start{
+            width: 340px;
+            margin: 0 auto;
+        }
+        .main{
+            width:100%;
+            height: 100%;
+            margin:0 auto;
+        }
+        .daohang{
+            width:800px;
+            height:65px;
+            margin:0 auto;
+            display:none;
+            position:relative;
+            z-index:1;
+        }
+        .start,.choose{
+            transition: all 1s;
+        }
+        .start:hover,.choose:hover{
+            transform: scale(1.1);
+        }
+        .defen{
+            float: left;
+            margin-top: 23px;
+            margin-left: 4px;
+        }
+        .scor{
+            width:195px;height:65px;
+            background:url(img/scor.png) no-repeat center;
+            float:left;
+        }
+        .life{
+            width:239px;height:65px;
+            background:url(img/life.png) no-repeat center;
+            float:left;
+            margin-left:30px;
+            position:relative;
+            margin-top: 3px;
+        }
+        .stop{
+            width:65px;height:65px;
+            background:url(img/stop.png) no-repeat center;
+            background-size:100%;
+            float:right;
+            cursor: pointer;
+        }
+        .scorinner,.stateinner{
+            width:100px;height:30px;
+            margin-left:121px;
+            margin-top:26px;
+        }
+        .lifeinner{
+            width:165px;height:40px;
+            margin-left:140px;
+            margin-top:22px;
+        }
+        .letter {
+            width: 130px;
+            height: 130px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        .jiemian1,.jiemian2{
+            width:100%;height:100%;
+            background:rgba(0,0,0,0.5);
+            position: absolute;
+            left:0;top:0;
+            display:none;
+            z-index:99;
+        }
+        .overbox{
+            width:484px;height:419px;
+            background:url(img/over.png) no-repeat center;
+            position: absolute;
+            left:0;right:0;top:0;bottom:0;
+            margin:auto;
+        }
+        .score{
+            width:100px;height:40px;
+            margin-left:280px;
+            margin-top:150px;
+            line-height:40px;
+        }
+        .maxscore{
+            width:100px;height:40px;
+            margin-left:280px;
+            margin-top:5px;
+            line-height:40px;
+        }
+        .btns{
+            width:250px;height:93px;
+            margin:0 auto;
+            margin-top:30px;
+        }
+        .restart{
+            width:93px;height:93px;
+            background:url(img/restart.png);
+            float:left;
+            cursor:pointer;
+            transition:all 1s;
+        }
+        .restart:hover{
+            transform:rotate(360deg);
+        }
+        .quit{
+            width:93px;height:93px;
+            background:url(img/quit.png);
+            float:right;
+            cursor:pointer;
+            background-size:100% 100%;
+            transition:all 1s;
+        }
+        .quit:hover{
+            transform:translateX(-30px);
+        }
+        .stopbox{
+            width:470px;height:220px;
+            background:url(img/stopbox.png);
+            position:absolute;
+            left:0;right:0;top:0;bottom:0;
+            margin:auto;
+            display:flex;
+            align-items:flex-end;
+            justify-content:space-around;
+        }
+        .continue{
+            width:93px;height:93px;
+            background:url(img/continue.png);
+            margin-bottom:30px;
+            cursor:pointer;
+            transition:all 1s;
+        }
+        .continue:hover{
+            transform:scale(1.1);
+        }
+        .stop-restart{
+            width:93px;height:93px;
+            background:url(img/restart.png);
+            margin-bottom:30px;
+            cursor:pointer;
+            transition:all 1s;
+        }
+        .stop-restart:hover{
+            transform:rotate(360deg);
+        }
+        .stop-quit{
+            width:93px;height:93px;
+            background:url(img/quit.png);
+            background-size:100% 100%;
+            margin-bottom:30px;
+            cursor:pointer;
+            transition:all 1s;
+        }
+        .stop-quit:hover{
+            transform:translateX(-30px);
+        }
+        .difficult{
+            width:839px;height:402px;
+            background:url(img/difficult.png) no-repeat;
+            position: absolute;
+            left:0;right:0;top:0;bottom:0;
+            margin:auto;
+            display:none;
+        }
+        .choosebox{
+            width:100%;height:93px;
+            margin-top:200px;
+            display:flex;
+            justify-content:space-around;
+        }
+        .choosebox div{
+            width:214px;height:93px;
+            cursor:pointer;
+            transition:all .5s;
+        }
+        .choosebox div:hover{
+            transform:scale(1.1);
+        }
+        .easy{
+            background:url(img/easy.png) no-repeat center;
+        }
+        .medium{
+            background:url(img/medium.png) no-repeat center;
+            box-shadow:0 0 5px red;
+        }
+        .hard{
+            background:url(img/hard.png) no-repeat center;
+        }
+        .back{
+            width:110px;height:110px;
+            background:url(img/quit.png);
+            margin:15px auto;
+            cursor:pointer;
+            transition:all 1s;
+        }
+        .back:hover{
+            transform:rotate(360deg);
+        }
+    </style>
+    <!--<script src="../../3.22animat.js、轮播图/function.js"></script>-->
+</head>
+<body>
+<div class="paihang">
+<div class="paitubiao"></div>
+    <ul class="paineirong">
+       
+    </ul>
+</div>
+<div class="music"></div>
+<div class="scene">
+    <div class="qi"></div>
+    <div class="startBox">
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="choose">
+            <a href="#"><img src="img/choose.png" alt=""></a>
+        </div>
+        <div class="start">
+            <a href="#"><img src="img/start.png" alt=""></a>
+        </div>
+    </div>
+    <div class="daohang">
+        <div class="scor">
+            <div class="defen">得分</div>
+            <div class="scorinner">0</div>
+        </div>
+        <div class="scor">
+            <div class="defen">关卡</div>
+            <div class="stateinner">1</div>
+        </div>
+        <div class="life">
+            <div class="lifeinner">5</div>
+        </div>
+        <div class="stop"></div>
+    </div>
+    <div class="main"></div>
+</div>
+<div class="jiemian1">
+    <div class="overbox">
+        <div class="score">0</div>
+        <div class="maxscore">0</div>
+        <div class="btns">
+            <div class="restart"></div>
+            <div class="quit">
+                <!--<img src="img/quit.png" alt="" class="tuichu">-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jiemian2">
+    <div class="stopbox">
+        <div class="continue"></div>
+        <div class="stop-restart"></div>
+        <div class="stop-quit"></div>
+    </div>
+</div>
+<div class="difficult">
+    <div class="choosebox">
+        <div class="easy"></div>
+        <div class="medium"></div>
+        <div class="hard"></div>
+    </div>
+    <div class="back">
+        <!--<img src="img/quit.png" alt="" class="tuichu">-->
+    </div>
+</div>
+<audio src="123.mp3" autoplay loop></audio></body>
+<script>
+    /**
+     * Created by Administrator on 2017/4/25.
+     */
+    var start=document.querySelector(".start");
+    var scene=document.querySelector(".scene");
+    var daohang=document.querySelector(".daohang")
+    var choose=document.querySelector(".choose");
+    var music=document.querySelector(".music");
+    var audio=document.querySelector("audio");
+    var choosebtn=document.querySelectorAll(".choosebox div");
+    var difficult=document.querySelector(".difficult");
+    var startBox=document.querySelector(".startBox");
+    var restart=document.querySelector(".restart");
+    var quit=document.querySelector(".quit");
+    var back=document.querySelector(".back");
+    var main=document.querySelector(".main");
+    var scor=document.querySelector(".scorinner");
+    var score=document.querySelector(".score");
+    var maxscore=document.querySelector(".maxscore");
+    var state=document.querySelector(".stateinner");
+    var life=document.querySelector(".lifeinner");
+    var stop=document.querySelector(".stop");
+    var jiemian1=document.querySelector(".jiemian1");
+    var jiemian2=document.querySelector(".jiemian2");
+    var startBox=document.querySelector(".startBox");
+   var paitubiao=document.querySelector(".paitubiao");
+   var paineirong=document.querySelector(".paineirong");
+
+    class Game {
+        constructor(main,scor,state,life,jiemian1,jiemian2,score,maxscore,choosebtn,paineirong) {
+            this.main = main;
+            this.score = score;
+            this.paineirong=paineirong;
+            this.choosebtn = choosebtn;
+            this.maxscoreele = maxscore;
+            // this.maxscore=localStorage.score?localStorage.score:0;
+            this.jiemian1 = jiemian1;
+            this.jiemian2 = jiemian2;
+            this.scorele = scor;
+            this.scor=0;
+            this.state =1;
+            this.stateele = state;
+            this.num = 3;
+            this.obj = {};
+            this.speed=5;
+            this.lifeele=life;
+            this.life=5;
+            this.height=window.innerHeight;
+            this.flag=true;
+            this.st=null;
+            this.maxscore=localStorage.score?JSON.parse(localStorage.score):[];
+        }
+        //创建字母
+        _createLetter() {
+            var div = document.createElement("div");
+            div.className = "letter";
+            do {
+                var rn = Math.floor(Math.random() * 26 + 65);
+                var le = String.fromCharCode(rn);
+            } while (this.obj[le])
+            //div.innerHTML = le;
+            div.style.backgroundImage=`url(images2/${le}.png)`;
+            do {
+                var rl = Math.random() * 1200;
+            } while (this._check(rl))
+            var rt = -Math.random() * 100;
+
+            div.style.left = rl + "px";
+            div.style.top = rt + "px";
+            this.obj[le] = {left: rl, top: rt, el: div};
+            this.main.appendChild(div);
+        }
+        //判断不重叠
+        _check(left) {
+            for (let i in this.obj) {
+                if (this.obj[i].left - 130 < left && left < this.obj[i].left + 130) {
+                    return true;
+                }
+            }
+        }
+        //外面开始
+        start(){
+            for(let i=0;i<this.num;i++){
+                this._createLetter();
+            }
+            this._move();
+            this._keydown();
+            this.flag=false;
+             this.maxscore=localStorage.score?JSON.parse(localStorage.score):[];
+            this.reWrite();
+        }
+        //游戏开始
+        _move(){
+            this.st=setInterval(function(){
+                for (let i in this.obj) {
+                    var t = this.obj[i].top;
+                    t += this.speed;
+                    this.obj[i].top = t;
+                    this.obj[i].el.style.top = t + "px";
+                    if(t>this.height){
+                        this.life--;
+                        this.lifeele.innerHTML=this.life;
+                        this.main.removeChild(this.obj[i].el);
+                        delete this.obj[i];
+                        this._createLetter();
+                        if(this.life==0){
+                            this._gameover();
+                            return;
+                        }
+                    }
+
+                }
+            }.bind(this),50)
+        }
+        //键盘事件
+        _keydown(){
+            document.onkeydown = function (e) {
+
+                var keycode = e.keyCode;
+                var l = String.fromCharCode(keycode);
+                if (this.obj[l]) {
+                    this.main.removeChild(this.obj[l].el);
+                    delete this.obj[l];
+                    this.scor++;
+                    this.scorele.innerHTML=this.scor;
+                    if(this.scor%10==0){
+                        this._upstate();
+                    }
+                    this._createLetter();
+                }
+            }.bind(this)
+        }
+        //关卡
+        _upstate(){
+            this.state++;
+            this.stateele.innerHTML=this.state;
+            if(this.state<=3){
+                this._createLetter();
+            }else{
+                this.speed+=3;
+            }
+        }
+         reWrite(){
+        this.paineirong.innerHTML="";
+        let that=this;
+        for(let i=0; i<this.maxscore.length;i++){
+ that.paineirong.innerHTML+=`<li><span>姓名：${this.maxscore[i].player}</span><span>得分：${this.maxscore[i].scor}</span></li>`;
+        }
+           
+        
+    }
+        //游戏结束
+        _gameover(){
+            this.jiemian1.style.display="block";
+            this.score.innerHTML=this.scor;
+            // if(this.scor<=this.maxscore){
+            //     this.maxscoreele.innerHTML=this.maxscore;
+            // }else{
+            //     this.maxscoreele.innerHTML=this.scor;
+            //     localStorage.score=this.scor;
+            //     this.maxscore=this.scor;
+            // }
+            console.log(this.maxscore)
+            if(this.maxscore.length<3||(this.maxscore.length>=3&&this.scor>this.maxscore[2].scor)){
+            var player=prompt("请输入姓名：");
+            this.maxscore.push({player,scor:this.scor});
+            this.maxscore.sort(function(a,b){
+                if(a.scor> b.scor){
+                    return -1;
+                }else{
+                    return 1;
+                }
+            })
+
+        }
+        if(this.maxscore.length>3){
+            this.maxscore.pop();
+        }
+        localStorage.score=JSON.stringify(this.maxscore);
+
+        this.maxscoreele.innerHTML=this.maxscore[0].scor;
+            this.main.innerHTML="";
+            //this.obj={};
+            //this.speed=5;
+            //this.scor=0;
+            //this.scorele.innerHTML=0;
+            //this.state=1;
+            //this.stateele.innerHTML=1;
+            //this.life=5;
+            //this.lifeele.innerHTML=5;
+            this.flag=true;
+            clearInterval(this.st);
+        }
+        //重新开始
+        restart(){
+            this.main.innerHTML="";
+            this.obj={};
+            this.speed=5;
+            this.scor=0;
+            this.scorele.innerHTML=0;
+            this.state=1;
+            this.stateele.innerHTML=1;
+            this.life=5;
+            this.lifeele.innerHTML=5;
+        }
+        //暂停
+        pause(){
+            clearInterval(this.st);
+            document.onkeydown=null;
+        }
+        //里面开始
+        play(){
+            this._move();
+            this._keydown();
+        }
+        //难易度
+        choosebtnplay(){
+            //for (let i = 0; i < this.choosebtn.length; i++) {
+            console.log(this.choosebtn[1])
+            //this.choosebtn[i].style.boxShadow = "none";
+            //}
+            //this.style.boxShadow="0 0 5px red";
+            if(this.choosebtn[0].className=="easy"){
+                this.num=1;
+            }else if(this.choosebtn[1]){
+                this.num=3;
+            }else if(this.choosebtn[2].className=="hard"){
+                this.num=5;
+            }
+        }
+    }
+    var game = new Game(main,scor,state,life,jiemian1,jiemian2,score,maxscore,choosebtn,paineirong);
+    var flag=true;
+    start.onclick=function(){
+        startBox.style.display="none";
+        daohang.style.display="block";
+        scene.style.backgroundImage="url(images2/bg2.jpg)";
+
+        //if(game.flag){
+        game.restart();
+        game.start();
+        //}
+    };
+    choose.onclick=function(){
+        startBox.style.display="none";
+        difficult.style.display="block";
+    };
+    choosebtn.forEach(function(choosebtns){
+        choosebtns.onclick=function(){
+            game.choosebtnplay();
+        }
+    });
+    restart.onclick=function(){
+        jiemian1.style.display="none";
+        //if(game.flag){
+        game.restart();
+        game.start();
+        //}
+    };
+    stop.onclick=function(){
+        if(flag){
+            stop.style.backgroundImage="url(img/continue.png)";
+            game.pause();
+        }else{
+            stop.style.backgroundImage="url(img/stop.png)";
+            game.play();
+        }
+        flag=!flag;
+
+    };
+    quit.onclick=function(){
+        jiemian1.style.display="none";
+        //main.style.display="none";
+        daohang.style.display="none";
+        startBox.style.display="block";
+        scene.style.backgroundImage="url(images2/bg.jpg)";
+    };
+    back.onclick=function(){
+        difficult.style.display="none";
+        startBox.style.display="block";
+    };
+    music.onclick=function(){
+        if(flag){
+            music.style.animationPlayState="paused";
+            audio.pause();
+        }else{
+            music.style.animationPlayState="running";
+            audio.play();
+        }
+        flag=!flag;
+    }
+    paitubiao.onclick=function(e){
+    e.stopPropagation();
+    paineirong.style.display="block";
+    game.reWrite();
+}
+window.onclick=function(){
+    paineirong.style.display="none";
+    paineirong.innerHTML="";
+}
+</script>
+</html>

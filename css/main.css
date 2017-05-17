@@ -261,7 +261,7 @@ label{
 }
 /*进度*/
 .skills{
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     width:100%;
     flex-grow:1;
     /*background: pink;*/
@@ -322,6 +322,10 @@ canvas{
     float: left;
     width: 20%;
     padding: 40px 0;
+}
+.slide ul li a{
+    display: block;
+    text-align: center;
 }
 .slide ul li h5{
     text-align: center;
@@ -514,8 +518,13 @@ canvas{
 }
 .myping .pkuai p{
     color:#000;
+    width:95%;
+    /*height: 80%;*/
     padding: 13px 15px;
     line-height: 33px;
+    overflow: hidden;
+    /*text-overflow:ellipsis;*/
+    /*white-space: nowrap;*/
 }
 .neikuan>.zuopinzi>h1{
     font-size: 40px;

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #2e6da4;
+        }
+
+        table {
+            width: 820px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        thead {
+            background: #1E6985;
+        }
+        #toggle{
+            background: #1b6d85;
+            height: 35px;
+            border-radius: 5px;
+            border: 0;
+            width: 104px;
+        }
+        th,td {
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+        }
+
+        .change {
+            width: 820px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .area {
+            display: none;
+        }
+        label{
+            display: block;
+        }
+        .shenghuo{
+            /*width: 820px;*/
+            background:rgba(255,255,255,.3);
+            color: #000;
+            margin: 0 auto;
+            /*border: 1px solid #000;*/
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        body{
+            background-image: url(1.jpg);
+        }
+    </style>
+</head>
+<body>
+<h1><span class="cityname"></span>天气预报</h1>
+<div class="change">
+    <label><input type="button" value="切换城市" id="toggle"></label>
+    <label class="area">省：
+        <select id="province">
+            <option>请选择省份</option>
+        </select>
+        市：<select id="city" value="">
+            <option>请选择市区</option>
+        </select>
+    </label>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>时间</th>
+        <th>天气</th>
+        <th>温度</th>
+        <th>风力</th>
+        <th>风向</th>
+        <th>降水量</th>
+        <th>湿度</th>
+    </tr>
+    </thead>
+    <tbody class="tianqi">
+    <!--<tr>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--<td></td>-->
+    <!--</tr>-->
+    </tbody>
+</table>
+<h1>生活指数</h1>
+<table>
+ <tbody class="shenghuo">
+ <tr id="air">
+     <td>空气</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="comf">
+     <td>舒适度</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="cw">
+     <td>洗车</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="drsg">
+     <td>穿衣</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="flu">
+     <td>流感</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="sport">
+     <td>运动</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="trav">
+     <td>旅行</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ <tr id="uv">
+     <td>紫外线</td>
+     <td></td>
+     <td>建议</td>
+     <td></td>
+ </tr>
+ </tbody>
+</table>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(function () {
+        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
+            var city = remote_ip_info.city;
+            update(city);
+        });
+        function update(city) {
+            $(".cityname").html(city);
+            $.get("https://free-api.heweather.com/v5/weather", {
+                city: city,
+                key: "6bf94f1cdfe74ca89cd5b211c8e3ce63"
+            }, function (r) {
+                console.log(r)
+                $(".tianqi").empty();
+                var obj = r.HeWeather5[0].daily_forecast;
+                var arr=["今天","明天","后天"];
+                $.each(obj, function (index, value) {
+                    $("<tr>").html(function () {
+                        return "<td>"+arr[index]+"</td><td>"+value.date+"</td><td>"+value.cond.txt_n+"</td><td>"+value.tmp.min+"℃"+"~"+value.tmp.max+"℃"+"</td><td>"+value.wind.sc+"</td><td>"+value.wind.dir+"</td><td>"+value.pcpn+"</td><td>"+value.hum+"</td>"
+                    }).appendTo(".tianqi");
+                });
+                $.each(r.HeWeather5[0].suggestion,function (index,value) {
+                    $("#"+index).find("td").eq(1).html(value.brf).end().eq(3).html(value.txt);
+                })
+            })
+        }
+
+        $("#toggle").click(function () {
+            $(".area").slideToggle();
+        }).one("click", function () {
+            $.getJSON("citys.json",function (r) {
+                var province = {};
+                $.each(r, function (index, value) {
+                    if (!province[value.provinceZh]) {
+                        province[value.provinceZh] = [];
+                    }
+                    province[value.provinceZh].push(value.cityZh);
+                });
+               $.each(province,function (index) {
+                   $("<option>").text(index).val(index).appendTo("#province")
+               });
+                $("#province").change(function () {
+                    var val=$(this).val();
+                    var citys=province[val];
+                    $("#city").html("<option>请选择市区</option>");
+                    $.each(citys,function (i,v) {
+                        $("<option>").text(v).val(v).appendTo("#city")
+                    })
+                });
+                $("#city").change(function () {
+                    if($(this).val()!=""){
+                        update($(this).val())
+                    }
+                })
+            })
+        });
+    })
+</script>
+<!--<script>-->
+
+<!--$.ajax({-->
+<!--url:"https://free-api.heweather.com/v5/weather",-->
+<!--data:{city:"太原",key:"6bf94f1cdfe74ca89cd5b211c8e3ce63"},-->
+<!--success:function (r) {-->
+<!--var obj=r.HeWeather5[0].daily_forecast;-->
+<!--$(obj).each(function (i,v) {-->
+<!--$($("tbody tr td:first-child")[i]).html(v.date);-->
+<!--$($("tbody tr td:nth-child(2)")[i]).html(v.cond.txt_n);-->
+<!--$($("tbody tr td:nth-child(3)")[i]).html(v.tmp.min+"℃"+"~"+v.tmp.max+"℃");-->
+<!--$($("tbody tr td:nth-child(4)")[i]).html(v.wind.sc);-->
+<!--$($("tbody tr td:nth-child(5)")[i]).html(v.wind.dir);-->
+<!--$($("tbody tr td:nth-child(6)")[i]).html(v.pcpn);-->
+<!--$($("tbody tr td:last-child")[i]).html(v.hum);-->
+<!--})-->
+<!--}-->
+<!--})-->
+
+<!--</script>-->
+</html>

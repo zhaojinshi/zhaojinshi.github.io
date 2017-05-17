@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            background:#ddd;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+<script>
+    window.onload=function () {
+        let canvas=document.querySelector("canvas");
+        let cobj=canvas.getContext("2d");//画笔
+        let x=200;//默认位置
+        let y=200;
+        canvas.onmousemove=function (e) {
+            x=e.offsetX;
+            y=e.offsetY;
+
+        }
+        class lizi{
+            constructor(canvas,cobj){
+            this.canvas=canvas;
+            this.cobj=cobj;
+            this.x=x;
+            this.y=y;
+            this.r=10*Math.random()+2;//随机半径
+            this.speedX=6*Math.random()-2;//随机左右距离
+            this.speedY=-5;//上距离
+            this.g=0.3;//重力
+            this.color=`rgb(${parseInt(255*Math.random())},${parseInt(255*Math.random())},${parseInt(255*Math.random())})`;
+        }
+
+        draw(){
+            this.cobj.save();//保存状态
+            this.cobj.translate(this.x,this.y);
+            this.cobj.beginPath(); //新建路径
+            this.cobj.arc(0,0,this.r,0,Math.PI*2);//圆
+            this.cobj.fillStyle=this.color;//设置图形的填充颜色
+            this.cobj.fill();//填充路径的内容区域生成实心的图形
+            this.cobj.restore();//恢复状态
+        }
+
+        update(){
+            this.x+=this.speedX;
+            this.speedY+=this.g;//加成正往下走
+            this.y+=this.speedY;
+        }
+    }
+        let arr=[];
+        let t=setInterval(function () {
+            cobj.clearRect(0,0,500,500);//清空
+            let liziobj=new lizi(canvas,cobj);//创建新的lizi函数
+            arr.push(liziobj);//后面加
+            for(let i=0;i<arr.length;i++){
+                arr[i].draw();//执行
+                arr[i].update();//执行
+                if(arr.length>=200){
+                    arr.shift();//后面删
+                }
+            }
+        },50)
+    }
+</script>
+</body>
+</html>

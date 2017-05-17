@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .scene {
+            width: 500px;
+            height: 500px;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            /*margin: 0 auto;*/
+            position: absolute;
+            left:60%;
+            margin-left: -250px;
+            top:50%;
+            margin-top: -250px;
+        }
+        .scenezz{
+            width:500px;
+            height:500px;
+            position: absolute;
+            left:60%;
+            margin-left: -250px;
+            top:50%;
+            margin-top: -250px;
+            background: rgba(108, 94, 102, 0.79);
+        }
+        .kais{
+            width:200px;
+            height:100px;
+            background: #A14925;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            color:#000;
+            border-radius: 10px;
+            margin: 150px auto;
+            cursor: pointer;
+        }
+        .block {
+            width: 49px;
+            height: 49px;
+            background-image: url(img/3.png);
+            background-size: 90px 164px;
+            background-position: center center;
+            float: left;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .control {
+            width: 200px;
+            height: 500px;
+            position: fixed;
+            left: 277px;
+            top: 130px;
+            /*background: #d58512;*/
+        }
+        .control div{
+            width: 180px;
+            height:45px;
+            background: #A14925;
+            margin: 10px auto;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+        }
+        .control time{
+            display: block;
+            width: 180px;
+            height:45px;
+            background: #A14925;
+            margin: 10px auto;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .show {
+            background-image: url(img/1.jpg);
+            background-size: cover;
+        }
+
+        .num {
+            background:#F1D9B3;
+            text-align: center;
+            line-height: 49px;
+            color:#000;
+        }
+
+        .flag {
+            background-image: url(img/2.jpg);
+            background-size: cover;
+        }
+
+        .flagnum {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .paihang,.nandu{
+            position: relative;
+        }
+        .paihang .ph,.nandu .nd{
+            width: 180px;
+            height: 200px;
+            background: #E4C6A4;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #000;
+            position: absolute;
+            top:35px;
+            left: 0;
+            z-index: 9999;
+            display: none;
+        }
+        .paihang .ph{
+            font-size: 16px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            z-index: 99999;
+        }
+        .nd li{
+            width:150px;
+            height:45px;
+            background:  #A14925;
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+        .jiesu{
+            /*height: 300px;*/
+            width: 400px;
+            position: absolute;
+            left:46%;
+            top:23%;
+            display: none;
+        }
+        .jiesu img{
+            width: 400px;
+            height: 400px;
+        }
+        body{
+            background-image: url(img/6.jpg);
+            background-size: cover;
+            background-position: 0 -30px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="scene"></div>
+<div class="jiesu">
+    <img src="img/5.png" alt="">
+</div>
+<div class="scenezz">
+    <div class="kais">开始游戏</div>
+</div>
+<div class="control">
+    <time>用时<span>0</span>秒</time>
+    <div class="flagnum">flag:5</div>
+    <div class="restart">重新开始</div>
+    <div class="paihang">排行榜
+        <div class="ph"></div>
+    </div>
+    <div class="nandu">难度选择
+     <div class="nd">
+         <ul class="nandu">
+             <li>简单</li>
+             <li>一般</li>
+             <li>困难</li>
+         </ul>
+     </div>
+    </div>
+
+</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    var num = 5;
+    var time=0;
+    var t;
+    var boom=5;
+    var range=0.95;
+    var maxscore=localStorage.score?JSON.parse(localStorage.score):[];
+    //难度判断
+    $(".nd").on("click",".nandu li",function (e) {
+        var target=e.target;
+        if($(target).html()=="简单"){
+            num=5;
+            boom=5;
+            range=0.95;
+            $(".flagnum").html("flag:" + num);
+        }
+        if($(target).html()=="一般"){
+            num=10;
+            boom=10;
+            range=0.9;
+            $(".flagnum").html("flag:" + num);
+        }
+        if($(target).html()=="困难"){
+            num=15;
+            boom=15;
+            range=0.85;
+            $(".flagnum").html("flag:" + num);
+        }
+        createlei();
+    });
+    //创建雷
+    function createlei() {
+        do {
+            $(".scene").empty();
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    var isLei = Math.random() > range;
+                    $("<div>")
+                        .addClass(function () {
+                            if (isLei) {
+                                return "block lei"
+                            } else {
+                                return "block";
+                            }
+                        })
+                        .attr("id", i + "-" + j)
+                        .data("pos", {x: i, y: j})
+                        .mousedown(mousedownEvent)
+                        .appendTo(".scene")
+                }
+            }
+        } while ($(".lei").length != num);
+    }
+    //点击
+    function mousedownEvent(e) {
+        if (e.which == 1) {
+            leftclick.call(this);
+        } else {
+            rightclick.call(this);
+        }
+    }
+    //左键
+    function leftclick() {
+        if ($(this).hasClass("flag")) {
+            return;
+        }
+        if ($(this).hasClass("lei")) {
+            $(".lei").addClass("show");
+//            alert("游戏结束");
+            $(".jiesu").slideDown(2000);
+            clearInterval(t);
+            $(".scene div").unbind("mousedown")
+        } else {
+            $(this).addClass("num");
+            var pos = $(this).data("pos");
+            var n = 0;
+            for (var i = pos.x - 1; i <= pos.x + 1; i++) {
+                for (var j = pos.y - 1; j <= pos.y + 1; j++) {
+                    if ($("#" + i + "-" + j).hasClass("lei")) {
+                        n++;
+                    }
+                }
+            }
+//            if ($("#" + (pos.x - 1) + "-" + (pos.y - 1)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x - 1) + "-" + (pos.y)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x - 1) + "-" + (pos.y + 1)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x) + "-" + (pos.y - 1)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x) + "-" + (pos.y + 1)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x + 1) + "-" + (pos.y - 1)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x + 1) + "-" + (pos.y)).hasClass("lei")) {
+//                n++;
+//            }
+//            if ($("#" + (pos.x + 1) + "-" + (pos.y + 1)).hasClass("lei")) {
+//                n++;
+//            }
+            $(this).html(n);
+            if (n == 0) {
+                for (let i = pos.x - 1; i <= pos.x + 1; i++) {
+                    for (let j = pos.y - 1; j <= pos.y + 1; j++) {
+                        var obj = $("#" + i + "-" + j);
+                        if (obj.length == 1 && !obj.hasClass("num")) {
+                            leftclick.call(obj[0])
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //右键
+    function rightclick() {
+        if ($(this).hasClass("num")) {
+            return;
+        }
+        if ($(this).hasClass("flag")) {
+            $(this).removeClass("flag");
+            num++;
+            $(".flagnum").html("flag:" + num);
+        } else {
+            num--;
+            if (num < 0) {
+                num++;
+                alert("选择错误");
+                clearInterval(t);
+                return;
+            }
+            $(this).addClass("flag");
+
+            if (num == 0) {
+                if ($(".flag").filter(".lei").length == boom) {
+                    alert("游戏胜利");
+                    clearInterval(t);
+                    $(".scene div").unbind("mousedown")
+                    if(maxscore.length<3||(maxscore.length>=3&&$("time span").html()<maxscore[2].scor)){
+                        var player=prompt("请输入姓名：");
+                        maxscore.push({player,scor:$("time span").html()});
+                        maxscore.sort(function(a,b){
+                            if(a.scor<b.scor){
+                                return -1;
+                            }else{
+                                return 1;
+                            }
+                        })
+
+                    }
+                    if(maxscore.length>3){
+                        maxscore.pop();
+                    }
+                    localStorage.score=JSON.stringify(maxscore);
+
+                }
+            }
+
+            $(".flagnum").html("flag:" + num);
+        }
+    }
+    $(document).on("contextmenu", function (e) {
+        e.preventDefault();
+    });
+    $(".paihang").click(function () {
+        $(".ph").fadeToggle(500);
+        $(".ph").html("");
+        $(maxscore).each(function (i,v) {
+            $(".ph").append("<li>姓名："+v.player+"得分："+v.scor);
+        })
+    });
+    $(".nandu").click(function () {
+        $(".nd").fadeToggle(500);
+    });
+    $(".kais").click(function () {
+        $(".scenezz").hide();
+        createlei();
+        t=setInterval(jishi,1000);
+
+    });
+
+    function jishi() {
+            time++;
+            $("time span").html(time);
+    }
+    $(".restart").click(function () {
+        $(".jiesu").slideUp(1000,function () {
+            clearInterval(t);
+            $(".scenezz").hide();
+            time=0;
+            num=boom;
+            $("time span").html(0);
+            t=setInterval(jishi,1000);
+            $(".sence").empty();
+            createlei();
+            $(".flagnum").html("flag:"+boom)
+        });
+
+    });
+createlei();
+    // data() 保存数据方法
+</script>
+</html>

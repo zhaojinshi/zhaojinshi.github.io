@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body{
+            overflow: hidden;
+            width:100%;
+            height:100%;
+            margin: 0;
+        }
+        .scene{
+            width:100%;
+            height:100%;
+            perspective:500px;
+        }
+        .scene ul{
+            width:100%;
+            height:100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        /*.scene:hover ul{*/
+            /*transform: rotate3d(1,1,0,360deg);*/
+        /*}*/
+        .scene ul li{
+            width:100%;
+            height:100%;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .scene ul li:nth-child(1){
+            background: red;
+            transform-origin: top;
+            transform: rotateX(90deg);
+            background-image: url(2.jpg);
+            background-position: 30px 0px;
+        }
+        .scene ul li:nth-child(2){
+              background: #B4A77B;
+              transform-origin: left;
+              transform: rotateY(-90deg);
+              background-image: url(4.jpg);
+              background-repeat: no-repeat;
+              background-position: 100px 100px;
+        }
+        .scene ul li:nth-child(3){
+            background: blue;
+            transform-origin: bottom;
+            transform: rotateX(-90deg);
+            background-image: url(5.jpg);
+        }
+        .scene ul li:nth-child(4){
+             background: #B4A77B;
+             transform-origin: right;
+             transform: rotateY(90deg);
+            background-image: url(6.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            /*background-size: cover;*/
+        }
+        .scene ul li:nth-child(5){
+              background: #cccbba;
+              transform: translateZ(100px);
+          }
+        .scene ul li:nth-child(6){
+            background: yellow;
+            background-image: url(1.jpg);
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <ul class="box">
+        <li>top</li>
+        <li>left</li>
+        <li>bottom</li>
+        <li>right</li>
+        <li>front</li>
+        <li>
+            <div class="container">
+                <video>
+                    <source src="1.mp4">
+                </video>
+                <div class="controls">
+                    <div class="start iconfont">
+                        &#xe607;
+                    </div>
+                    <div class="reload iconfont">
+                        &#xe61a;
+                    </div>
+                    <div class="progress">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="time">
+                        <span id="now">0:00</span>
+                        <b>/</b>
+                        <span id="all">00:00</span>
+                    </div>
+                    <div class="volume">
+                        <span class="iconfont">&#xe609;</span>
+                        <div class="bg">
+                            <div class="vol">
+                                <div class="volinner"></div>
+                            </div>
+                            <div class="mask"></div>
+                        </div>
+                    </div>
+                    <div class="fullscreen iconfont">&#xe665;</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="js/hover.js"></script>
+<script src="js/bofang2.js"></script>
+<script>
+var tops=document.querySelector("li:nth-child(1)");
+var bottom=document.querySelector("li:nth-child(3)");
+var front=document.querySelector("li:nth-child(5)");
+var box=document.querySelector(".box");
+var clientw=window.innerWidth;
+var clienth=window.innerHeight;
+tops.style.width=tops.style.height=bottom.style.width=bottom.style.height=clientw+"px";
+front.style.transform=`translateZ(${clientw}px)`;
+box.style.transform="translateZ(-500px)";
+bottom.style.top=`${clienth-clientw}px`;
+box.style.transformOrigin="center center 600px";
+box.onmousedown=function (e) {
+    var cx=e.clientX;
+    box.onmousemove=function(e){
+        var mx=e.clientX;
+        var ox=mx-cx;
+        box.style.transform=`translateZ(-500px) rotateY(${ox}deg)`;
+    }
+    box.onmouseup=function () {
+        box.onmousemove=null;
+        box.onmouseup=null;
+    }
+}
+</script>
+</html>

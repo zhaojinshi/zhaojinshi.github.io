@@ -60,11 +60,11 @@
                     <div class="pkuai"><p>忠实诚信,讲原则，说到做到，决不推卸责任;有自制力，做事情始终坚持有始有终，从不半途而废;肯学习,有问题不逃避,愿意虚心向他人学习;自信但不自负,不以自我为中心;愿意以谦虚态度赞扬接纳优越者,权威者;会用100%的热情和精力投入到工作中;平易近人。为人诚恳,性格开朗,积极进取,适应力强、勤奋好学、脚踏实地，有较强的团队精神,工作积极进取,态度认真。</p></div>
                 </div>
                 <div class="xinqing">
-                    <h1>你若安好</h1>
-                    <h1>我便晴天</h1>
+                    <h1>心情好坏</h1>
+                    <h1>天气决定</h1>
                 </div>
-                <div class="change">
-                    <label class="label1"><input type="button" value="切换城市" id="toggle"></label>
+                <!--<div class="change">-->
+
                     <label class="area">省：
                         <select id="province">
                             <option>请选择省份</option>
@@ -73,7 +73,7 @@
                             <option>请选择市区</option>
                         </select>
                     </label>
-                </div>
+                <!--</div>-->
                 <table class="table1">
                     <thead>
                     <tr>
@@ -87,6 +87,7 @@
                     <tbody class="tianqi">
                     </tbody>
                 </table>
+            <label class="label1"><input type="button" value="切换城市" id="toggle"></label>
             </div>
         </div>
     <div class="section box3">
@@ -155,10 +156,10 @@
                     <a href="中国移动/index.html"><img src="img/8.jpg" alt=""></a>
                     <h5>中国移动官网</h5>
                 </li>
-                <li>
-                    <a href="苹果网站/index.html"><img src="img/8.jpg" alt=""></a>
-                    <h5>苹果官网</h5>
-                </li>
+                <!--<li>-->
+                    <!--<a href="苹果网站/index.html"><img src="img/8.jpg" alt=""></a>-->
+                    <!--<h5>苹果官网</h5>-->
+                <!--</li>-->
                 <li>
                     <a href="天猫手机端/index.html"><img src="img/8.jpg" alt=""></a>
                     <h5>移动端天猫官网</h5>
@@ -209,40 +210,37 @@
             </ul>
         </div>
     </div>
-    <div class="section">
-        <div class="waikuan1">
-            <div class="neikuan">
-                <div class="dibu">
-                    <h1><a name="lx">CONTACT ME</a></h1>
-                </div>
-                <div class="dibuzi">
-                    <h1>Lorem ipsum dolor sit amet, consectetu adipiscing elit. Duis sed leo necornarediamcommodo nibh ante facilisis.</h1>
-                </div>
-                <div class="tubiaobox clear">
-                    <div class="tubiao col-lg-4 col-sm-12">
-                        <div class="iconfont iconfont1">&#xe60a;</div>
-                        <h1>321 Awesome Street
-                            New York, NY 17022</h1>
+    <div class="section box5">
+        <div class="neikuan">
+            <div class="sale-main clear">
+                <div class="col-lg-6 sale-left box5-zuo">
+                    <h3>时间就是成绩</h3>
+                    <p>人们常觉得准备的阶段是在浪费时间，只有当真正的机会来临，而自己没有能力把握的时候，才能觉悟到自己平时没有准备才是浪费了时间。</p>
+                    <div class="sale-btn">
+                        <a href="#" class="hvr-sweep-to-right">View Time!</a>
                     </div>
-                    <div class="tubiao col-lg-4 col-sm-12">
-                        <div class="iconfont iconfont1">&#xe616;</div>
-                        <h1>info@companyname.com</h1>
-                    </div>		<div class="tubiao col-lg-4 col-sm-12">
-                    <div class="iconfont iconfont1">&#xe600;</div>
-                    <h1>+1 800 123 1234</h1>
+                    <div class="count">
+                        <div id="counter"> </div>
+                    </div>
                 </div>
-                </div>
-                <div class="lianxi">
-                    <h1>LEAVE ME A MESSAGE</h1>
-                </div>
-                <div class="dibudak clear">
-                    <div class="dibuk">name</div>
-                    <div class="dibuk"></div>
-                    <div class="dibuk2"></div>
-
+                <div class="col-lg-6 sale-right box5-you">
+                    <div class="sale-one">
+                        <p>If you acknowledge me please leave your message and I will contact you</p>
+                        <div class="sale-bottom clear">
+                            <div class="col-lg-6 sale-bottom-left">
+                                <input type="text" value="Tle" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Tle';}"/>
+                                <input type="text" value="Add" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Add';}"/>
+                                <input type="text" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}"/>
+                            </div>
+                            <div class="col-lg-6 sale-bottom-right">
+                                <textarea value="Your Message" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Your Message';}">Your Message</textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="biaopan"></div>
     </div>
 </div>
 </body>
@@ -272,7 +270,14 @@
                 $(".pkuai").css("animation","bounceIn 3s");
                 }
                 if(index==5){
-                    $(".next").css("transform","rotate(-180deg)").addClass("active")
+                    $(".next").css("transform","rotate(-180deg)").addClass("active");
+                    $(".box5-zuo").transition({left:0},2000,"easeOutCirc");
+                    $(".box5-you").transition({right:0},2000,"easeOutCirc");
+                    $(".sale-btn").click(function () {
+                        $(this).hide();
+                        $(".biaopan").show();
+                    })
+
                 }else{
                     $(".next").css("transform","rotate(0deg)").removeClass("active")
                 }
@@ -543,7 +548,12 @@
                         let cobj=canvas.getContext("2d");
                         cobj.translate(-100,-100);
                     }
-
+                }
+                if(index==5){
+                        $(".sale-btn").show();
+                        $(".biaopan").hide();
+                        $(".box5-zuo").animate({left:-70+"%"});
+                        $(".box5-you").animate({right:-70+"%"});
                 }
             },
         });
@@ -558,7 +568,6 @@
         })
 
 
-
             setInterval(function () {
                 $(".wenzi").animate({top:-200},1000,function () {
                     $(".wenzi").find("p").eq(0).appendTo(".wenzi");
@@ -571,10 +580,10 @@
         });
 
 
-        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
-            var city = remote_ip_info.city;
+//        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
+            var city = "太原";
             update(city);
-        });
+//        });
         function update(city) {
             $(".cityname").html(city);
             $.get("https://free-api.heweather.com/v5/weather", {
@@ -622,8 +631,52 @@
             })
         });
 
+//表盘函数
+        function createPlate() {
+            var div=document.querySelector(".biaopan");
+            for(let i=0;i<60;i++){
+                let kd=document.createElement("div");
+                kd.style.cssText="width:4px;height:5px;background:#999;position:absolute;left:98px;transform-origin:2px 100px;";
+                let angle=i*6;
+                if(i%5==0){
+                    kd.style.height="10px";
+                    kd.style.background="#000";
+                }
+                kd.style.transform=`rotate(${angle}deg)`;
+                div.appendChild(kd);
+            };
+            var circle=document.createElement("div");
+            circle.style.cssText="width:13px;height:13px;border-radius:50%;background:#000;left:92px;top:92px;position:absolute;z-index:1;";
+            div.appendChild(circle);
 
+            //创建时针
+            var hour=document.createElement("div");
+            hour.style.cssText="width:60px;height:5px;background:#000;position:absolute;left:100px;top:96px;transform-origin:left center;";
+            div.appendChild(hour);
 
+            //创建分针
+            var minute=document.createElement("div");
+            minute.style.cssText="width:80px;height:3px;background:#000;position:absolute;left:100px;top:97px;transform-origin:left center;";
+            div.appendChild(minute);
+
+            //创建秒针
+            var second=document.createElement("div");
+            second.style.cssText="width:120px;height:1px;background:#000;position:absolute;left:70px;top:98px;transform-origin:30px center;";
+            div.appendChild(second);
+            //设置时间
+            function setTime() {
+                var date=new Date();
+                var hours=date.getHours();
+                var minutes=date.getMinutes();
+                var seconds=date.getSeconds();
+                hour.style.transform=`rotate(${hours/12*360-90+minutes/60*30}deg)`;
+                minute.style.transform=`rotate(${minutes/60*360-90+seconds/60*6}deg)`;
+                second.style.transform=`rotate(${seconds/60*360-90}deg)`;
+            }
+            setTime();
+            setInterval(setTime,1000);
+        }
+        createPlate();
 
 
     })

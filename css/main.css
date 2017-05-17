@@ -324,8 +324,15 @@ canvas{
     padding: 40px 0;
 }
 .slide ul li a{
+    position: relative;
+    width:200px;
+    height:200px;
     display: block;
+    margin: 0 auto;
     text-align: center;
+}
+.slide ul li a:hover .zhezhao{
+    display: block;
 }
 .slide ul li h5{
     text-align: center;
@@ -333,8 +340,20 @@ canvas{
     font-size: 20px;
     cursor: pointer;
 }
-
-
+.zhezhao{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    background: rgba(21,33,13,.8);
+    height:100%;
+    display:none;
+}
+.zhezhao h5{
+    font-size: 16px;
+    text-align: center;
+    line-height:200px;
+}
 
 .iconfont1{
     color: #fff;
@@ -719,7 +738,7 @@ span.Minutes {
     position:absolute;
     z-index:9999;
     top:50%;
-    left:24%;
+    left:22%;
     display:none;
     background-image:url(../img/t0183aa8c4ab2181822.gif);
     background-position:center;

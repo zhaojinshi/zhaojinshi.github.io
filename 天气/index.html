@@ -174,10 +174,11 @@
 <script src="jquery.js"></script>
 <script>
     $(function () {
-        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
-            var city = remote_ip_info.city;
+//        $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function () {
+//            var city = remote_ip_info.city;
+            var city = "太原";
             update(city);
-        });
+//        });
         function update(city) {
             $(".cityname").html(city);
             $.get("https://free-api.heweather.com/v5/weather", {

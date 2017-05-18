@@ -373,7 +373,7 @@ display: none;
 	width: 100%;
 }
 .wenzi>ul>li{
-	display: none!important
+	display: none;
 }
 .dibu>.neikuan>.wenzi>ul>h1{
 	width: 100%;

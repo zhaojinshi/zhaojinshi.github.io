@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<link rel="stylesheet" href="css/tanchishe.css">
+</head>
+<body>
+	<div class="kaishi">
+		<div class="new">start</div>
+	</div>
+	<div class="sence">	
+	</div>
+	<div class="over">
+		<span>游戏结束</span>
+		<div class="zuigaofen">最高分：<span>00</span></div>
+		<div class="defen">得分：<span>00</span></div>
+	</div>
+	<div class="control">
+		<div class="phb">最高分：0</div>
+		<div class="scor">得分：0</div>
+		<div class="zant">暂停</div>
+		<div class="restart">重新开始</div>
+		<div class="back">退出游戏</div>
+	</div>
+
+
+	<script src="function.js"></script>
+	<script>
+	$(function(){
+		const sence=$(".sence")[0];
+		const kaishi=$(".kaishi")[0];
+		const over=$(".over")[0];
+		const btn1=$(".new")[0];
+		const zgf=$(".zuigaofen span")[0];
+		const df=$(".defen span")[0];
+		const zt=$(".zant")[0];
+		const control=$(".control")[0];
+		const restart=$(".restart")[0];
+		const back=$(".back")[0];
+		const scor=$(".scor")[0];
+		const time=$(".time")[0];
+		const bestscor=$(".phb")[0];
+		sence.style.display="none";
+        let tcs1;
+		btn1.onclick=function(){
+			tcs1=new tcs(sence,zgf,df,zt,over,scor,time,bestscor);
+			tcs1.play();
+			kaishi.style.display="none";
+			sence.style.display="block";
+            control.style.display="block";
+		}
+        restart.onclick=function () {
+		    over.style.display="none";
+            tcs1.play();
+        }
+        back.onclick=function () {
+		    tcs1.gameover();
+            kaishi.style.display="block";
+            sence.style.display="none";
+            control.style.display=" none";
+        }
+	})
+	class tcs{
+		constructor(sence,zgf,df,pauseobj,over,scor,time,bestscor){
+			this.sence=sence;
+			this.over=over;
+			this.scor=scor;
+			this.bestscor=bestscor;
+			this.time=time;
+			this.times=0;
+			// 最高分
+			this.zgf=zgf;
+			// 得分
+			this.df=df;
+			// 暂停
+			this.pauseobj=pauseobj;
+			//初始化蛇 x:0,y:0 表示蛇所占的格子
+			this.she=[{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+			// 初始化蛇移动的方向
+			this.shef="right";
+
+			this.flag=true;
+			// 游戏分数
+			this.fenshu=0;
+			// 暂停状态
+			this.zt=true;
+			// 开始的时间
+			this.starttime;
+			// 游戏中用的时间
+			this.dtime=0;
+            //foodw表示随机产生食物的位置
+            this.foodw={};
+            this.st;
+        }
+		play(){
+            this.bestscor.innerHTML="最高分："+localStorage.zgf;
+			// 获取当前时间
+			let time=new Date();
+			this.starttime=time.getTime();
+			this.dtime=this.starttime;
+			// 分数
+			if(Number(localStorage.zgf)){
+				this.zgf.innerHTML=localStorage.zgf;
+				this.maxfen=localStorage.zgf;
+			}else{
+				this.maxfen=0;
+				this.zgf.innerHTML=this.maxfen;
+			}
+			this.changefenshu();
+			
+			//建场景
+			this.createSence();
+			//创建蛇
+			this.createShe();
+			//蛇跑
+			this.shemove();
+			//控制蛇
+			this.contorlshe();
+			// 创建食物
+			this.createShiwu();
+			// 超级食物
+//			this.createsuperShiwu()
+			// 暂停
+			this.pause();
+
+		}
+		// 暂停
+		pause(){
+			let that=this;
+			this.pauseobj.onclick=function(){
+				if(that.zt){
+					that.zt=false;
+					clearInterval(that.t);
+					that.pauseobj.innerHTML="开始";
+				}else{
+					that.zt=true;
+					that.shemove();
+					that.pauseobj.innerHTML="暂停";
+				}
+			}
+		}
+		// 改变分数
+		changefenshu(){
+			this.df.innerHTML=this.fenshu;
+			this.scor.innerHTML="得分："+this.fenshu;
+			if(this.maxfen<this.fenshu){
+				this.maxfen=this.fenshu;
+			}
+		}
+		createSence(){
+			// 行
+			for(let i=0;i<20;i++){
+				// 列
+				for(let j=0;j<20;j++){
+					// 创建div
+					let gezi=$("<div>");
+					// 添加id属性
+					gezi.id=`${i}-${j}`;
+					// 添加class名
+					gezi.classList.add("gezi");
+					// 将格子格子添加到屏幕上
+					this.sence.appendChild(gezi);
+				}
+			}
+			// console.log(document.getElementById("0-0"));
+		}
+		createShe(){
+			// 遍历蛇的初始化数组 创建蛇
+			for(let i=0;i<this.she.length;i++){
+				// 获取蛇的位置并添加类名she
+				this.getElement(this.she[i]).classList.add("she");
+			}
+		}
+		shemove(){
+			let that=this;
+			this.t=setInterval(function(){
+				//
+                that.times++;
+				that.dtime+=300;
+				// 判断游戏时间 与 开始时间之间的差值 如果时间符合就创建超级食物
+//				if((that.dtime-that.starttime)>1000){
+//					if(that.superfoodw){
+//						that.getElement(that.superfoodw).classList.add("superfood");
+//					}
+//
+//					let time=new Date();
+//					that.starttime=time.getTime();
+//					that.dtime=that.starttime;
+////					that.createsuperShiwu();
+//				}
+				//创建新的蛇头
+				let newtou;
+				//如果蛇的方向是向右，则将y值加1  y值代表的是列
+			// 方向不同，新蛇头不同
+				if(that.shef=="right"){
+					newtou={x:that.she[that.she.length-1].x,y:that.she[that.she.length-1].y+1}
+				}
+				if(that.shef=="left"){
+					newtou={x:that.she[that.she.length-1].x,y:that.she[that.she.length-1].y-1}
+				}
+				if(that.shef=="top"){
+					newtou={x:that.she[that.she.length-1].x-1,y:that.she[that.she.length-1].y}
+				}
+				if(that.shef=="bottom"){
+					newtou={x:that.she[that.she.length-1].x+1,y:that.she[that.she.length-1].y}
+				}
+
+
+				// 判断新蛇头是否碰到边界，若碰到边界就游戏结束
+				if(newtou.x<0||newtou.x>19||newtou.y<0||newtou.y>19){
+                    that.over.style.display="block";
+					that.gameover();
+					// 结束运行
+					return;
+				}
+				// 遍历蛇 
+				for(let i=0;i<that.she.length;i++){
+					// 判断新蛇头是否碰到自己 若碰到自己就游戏结束
+					if(newtou.x==that.she[i].x&&newtou.y==that.she[i].y){
+                        that.over.style.display="block";
+						that.gameover();
+						return;
+					}
+				}
+				//将蛇头加上
+				that.she.push(newtou);
+				// 判断食物的位置与蛇头是否相同 若相同移除food类名，同时蛇不用去蛇尾(相当吃掉食物)
+				if(newtou.x==that.foodw.x&&newtou.y==that.foodw.y){
+					// 获取食物的位置并去掉食物
+					that.getElement(that.foodw).classList.remove("food");
+					// 重新创建食物
+					that.createShiwu();
+					that.fenshu++;
+					that.changefenshu();
+				}
+				// 若不同，则蛇移动，去掉蛇尾 保持长度不变(相当蛇没吃食物)
+				else{
+					//去掉蛇尾
+					let oldwei=that.she.shift();
+					// 移除被去掉蛇尾的类名
+					that.removewei(oldwei);
+				}
+
+//				if(that.superfoodw){
+//						// 判断食物的位置与蛇头是否相同 若相同移除food类名，同时蛇不用去蛇尾(相当吃掉食物)
+//					if(newtou.x==that.superfoodw.x&&newtou.y==that.superfoodw.y){
+//						// 获取食物的位置并去掉食物
+//						that.getElement(that.superfoodw).classList.remove("superfood");
+//						that.fenshu+=5;
+//						// console.log(that.fenshu);
+//						that.changefenshu();
+//					}
+//				}
+
+				// 重新创建蛇
+				that.createShe();
+				that.flag=true;
+			},300)
+		}
+		removewei(oldwei){
+			// 获取蛇尾的位置并移除类名
+			this.getElement(oldwei).classList.remove("she");
+		}
+		contorlshe(){
+			let that=this;
+			// e是事件对象
+			window.onkeydown=function(e){ 
+				if(that.flag){
+					that.flag=false;
+					// 判断键盘按下的键是哪个
+					// 键盘左键的键盘码是37
+					if(e.keyCode==37){
+						// 如果蛇的移动方向和按键的方向相反时，蛇继续按着原来的方向移动， 反之，蛇按着按键的方向走
+
+						if(that.shef!="right"){
+							// 键盘按下左键，使得蛇向左移动
+							that.shef="left";
+						}
+					}
+
+					// 键盘上键的键盘码是38
+					if(e.keyCode==38){
+						if(that.shef!="bottom"){
+							// 键盘按下上键，使得蛇向上移动
+							that.shef="top";
+						}
+					}
+
+					// 键盘右键的键盘码是39
+					if(e.keyCode==39){
+						if(that.shef!="left"){
+							// 键盘按下右键，使得蛇向右移动
+							that.shef="right";
+						}	
+					}
+
+					// 键盘下键的键盘码是40
+					if(e.keyCode==40){
+						if(that.shef!="top"){
+							// 键盘按下下键，使得蛇向下移动
+							that.shef="bottom";
+						}	
+					}
+				}
+			
+			}
+		}
+		createShiwu(){
+			// 创建对象
+			// 给对象添加属性
+			// 获取随机x y
+			this.foodw.x=Math.floor(Math.random()*20);
+			this.foodw.y=Math.floor(Math.random()*20);
+
+			// 获取foodw的位置 并添加类名
+			this.getElement(this.foodw).classList.add("food");
+		}
+		// 游戏结束
+		gameover(){
+			localStorage.zgf=this.maxfen;
+			this.bestscor.innerHTML="最高分："+localStorage.zgf;
+			clearInterval(this.t);
+            for(let i=0;i<this.she.length;i++){
+                this.getElement(this.she[i]).classList.remove("she");
+            }
+            this.getElement(this.foodw).classList.remove("food");
+            this.she=[{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+			this.fenshu=0;
+            this.sence.innerHTML="";
+            this.scor.innerHTML="得分："+0;
+            this.shef="right";
+		}
+		timemove(){
+		    this.st=setInterval(function () {
+                this.times++;
+                this.time.innerHTML=this.times;
+            },1000)
+
+		}
+		// 创建超级食物
+//		createsuperShiwu(){
+//			// 创建对象
+//			//superfoodw表示随机产生食物的位置
+//			this.superfoodw={};
+//
+//			// 给对象添加属性
+//			// 获取随机x y
+//			this.superfoodw.x=Math.floor(Math.random()*20);
+//			this.superfoodw.y=Math.floor(Math.random()*20);
+//
+//			// 获取foodw的位置 并添加类名
+//			this.getElement(this.superfoodw).classList.add("superfood");
+//		}
+
+		// 获取id （位置）
+		// getElement(id){
+		// 	return document.getElementById(id);
+		// }
+
+
+		getElement(weizhi){
+			let id=weizhi.x+"-"+weizhi.y;
+			return document.getElementById(id);
+		}
+	}
+	</script>
+</body>
+</html>

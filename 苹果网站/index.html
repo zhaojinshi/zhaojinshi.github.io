@@ -47,11 +47,11 @@
 			<div class="tupianbox">
 			
 			<div class="bannertupian">
-			<!-- <h1>iphone</h1>
-			<h2>7,在此</h2> -->
+			<h1>iphone</h1>
+			<h2>7,在此</h2>
 			</div>
-			<div class="bannertupian bannertupian1"></div>
-			<div class="bannertupian bannertupian2"></div>
+			<!--<div class="bannertupian bannertupian1"></div>-->
+			<!--<div class="bannertupian bannertupian2"></div>-->
 
 
 			
@@ -144,7 +144,6 @@
 				<li>Music</li>
 				<li>iTunes</li>
 				<li>iTunes</li>
-
 				<li>iTunes</li>
 
 				
@@ -204,19 +203,32 @@
 
 </div>
 
-
-
-
-
-	
-<script src="js/animate.js"></script>
-<script src="js/function.js"></script>
-<script>
-	
-	$(function(){
-	zylunbo(".bannertupian",".bannerbox",".tupianbox",["#fff","000","e1e1e1"],".jiantou",".jiantou1",".tiao","#000",2000,1000,"#fff");
-	})
-</script>
-
 </body>
+<script src="js/jquery.js"></script>
+<script src="js/animate.js"></script>
+<!--<script src="js/function.js"></script>-->
+<script>
+
+    //	$(function(){
+    //	zylunbo(".bannertupian",".bannerbox",".tupianbox",["#fff","000","e1e1e1"],".jiantou",".jiantou1",".tiao","#000",2000,1000,"#fff");
+    //	})
+
+
+    $(window).resize(function(){
+        if($(window).width()<=735){
+            $(".wenzi ul h1").each(function(i,v){
+                $(this).click(function(){
+                    $($(".wenzi ul")[i]).find("li").slideToggle();
+                })
+            })
+        }else{
+            $(".wenzi ul h1").each(function(i,v){
+                $(this).click(function(){
+                    $($(".wenzi ul")[i]).find("li").slideUp();
+                })
+            })
+        }
+    })
+
+</script>
 </html>

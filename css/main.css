@@ -196,7 +196,7 @@
 .xinqing{
     position: absolute;
     top: 9%;
-    right:16%;
+    right:18%;
     color: #9BE48B;
 }
 .xinqing h1:nth-child(1){
@@ -211,7 +211,7 @@
 }
 .table1{
     position: absolute;
-    right: 11%;
+    right: 13%;
     top: 29%;
 }
 .table1 th{
@@ -220,6 +220,7 @@
     color: #D69C1E;
 }
 .table1 td{
+    font-size: 15px;
     text-align: center;
     /*color: #D69C1E;*/
 }
@@ -233,7 +234,7 @@
 .label1{
     position: absolute;
     top: 39%;
-    right: 3%;
+    right: 5%;
 }
 
 label{
@@ -321,7 +322,7 @@ canvas{
 .slide ul li{
     float: left;
     width: 20%;
-    padding: 40px 0;
+    padding: 35px 0;
 }
 .slide ul li a{
     position: relative;
@@ -533,7 +534,7 @@ canvas{
     left: 30px;
     border: 2px solid #BB2024;
     width: 95%;
-    height: 80%;
+    height: 93%;
 }
 .myping .pkuai p{
     color:#000;

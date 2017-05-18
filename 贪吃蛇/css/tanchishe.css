@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+html body{
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+}
+.sence{
+	width: 600px;
+	height: 600px;
+	border: 1px solid #000;
+	margin: 0 auto;
+}
+body{
+	background-image: url(../img/2.jpg);
+	background-position: center -75px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.gezi{
+	width: 30px;
+	height: 30px;
+	/*background: #fff;*/
+	background: #5A5A5A;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	box-sizing:border-box;
+	float: left;
+}
+.gezi:nth-child(20n){
+	border-right: 0;
+}
+.gezi:nth-child(380)~.gezi{
+
+	border-bottom: 0;
+}
+.she{
+	background: #2CB668;
+}
+.food{
+	background: orange;
+}
+.kaishi{
+	width: 600px;
+	height: 600px;
+	border:1px solid #ccc;
+	margin:0 auto;
+	z-index: 10;
+	text-align: center;
+	cursor: pointer;
+	background-color: #5A5A5A;
+	background-image: url("../img/1.jpg");
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.new{
+	width:200px;
+	height: 50px;
+	background: #FF6531;
+	border-radius: 20px;
+	font-size: 25px;
+	color: #fff;
+	line-height: 50px;
+	position: absolute;
+	bottom:450px;
+	left:0;
+	right:0;
+	margin: auto;
+}
+.zant,.scor,.back,.restart,.phb,.time{
+	width:160px;
+	height: 30px;
+	border-radius: 20px;
+	line-height: 30px;
+	text-align: center;
+	background: #40e5d4;
+	margin: 50px auto;
+	cursor: pointer;
+}
+.over{
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	margin: auto;
+	background: #5A5A5A;
+	z-index: 100;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.over>span{
+	font-size: 30px;
+	color: #000;
+	line-height: 300px;
+}
+.rep{
+	width: 100px;
+	height: 30px;
+	background: blue; 
+	border-radius: 10px;
+	font-size: 12px;
+	margin: 0 auto;
+	color: #fff;
+	margin-top: 80px;
+
+}
+.zuigaofen span{
+	color: #fff;
+	font-size: 20px;
+}
+.defen span{
+	color: #fff;
+	font-size: 20px;
+}
+.superfood{
+	background: blue;
+}
+.control{
+	width:200px;
+	height: 600px;
+	position:fixed;
+	top:0;
+	left:50%;
+	margin-left: -510px;
+	background: #FFFF8A;
+	display: none;
+}

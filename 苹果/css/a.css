@@ -1,0 +1,928 @@
+@import url("common.css");
+/*小屏代码[-,735]*/
+@media screen and (max-width:735px){
+	/*头部开始*/
+	header span{
+		width:100%;
+		padding:10px 20px 0 20px;
+		box-sizing:border-box;
+	}
+	/*头部结束*/
+	/*导航开始*/
+	.hidden{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+	nav.small-screen > div{
+		width:100%;
+		height:100%;
+		margin:0 auto;
+	}
+	nav.small-screen > div > .top{
+		width:100%;
+		height:100%;
+		display:flex;
+		justify-content: space-between;
+	}
+	nav.small-screen > div > .top >a:first-child > div{
+		margin-top:6px;
+		width:17px;
+		height:1px;
+		background:#fff;
+		transform: rotate(0deg);
+		transition: transform 0.35s linear;
+	}
+	nav.small-screen > div > .top >a:first-child > div:first-child{
+		transform-origin:4px center;
+	}
+	nav.small-screen > div > .top >a:first-child > div:last-child{
+		transform-origin:center -2px;
+	}
+	nav.small-screen > div > .top >a:first-child > div:first-child.active{
+		transform: rotate(45deg);
+	}
+	nav.small-screen > div > .top >a:first-child > div:last-child.active{
+		transform: rotate(135deg);
+	}
+	nav.small-screen > div > .top >a:first-child:hover div{
+		background:#888;
+	}
+	nav.small-screen > div >ul{
+		position: absolute;
+		left:0;
+		top:44px;
+		width:100%;
+		height:100%;
+		background:#000;
+		padding:0 50px;
+		box-sizing:border-box;
+		z-index:100000;
+		display:none;
+	}
+	nav.small-screen > div >ul > li{
+		width:100%;
+		height:44px;
+		padding:5px 0;
+		box-sizing: border-box;
+		font-size:14px;
+		border-bottom: 1px solid #333;
+		opacity:0;
+		transform: scale(1.2);
+	}
+	nav.small-screen > div >ul > li:last-child{
+		border-bottom: 1px solid #fff;
+	}
+	nav.small-screen > div >ul > li.active{
+		opacity:1;
+		transform:none;
+		transition:opacity 0.35s ease-out,transform 0.35s ease-out; 
+	}
+	nav.small-screen > div >ul > li:nth-child(1){
+		transition-delay: 300ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(2){
+		transition-delay: 350ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(3){
+		transition-delay: 400ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(4){
+		transition-delay: 450ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(5){
+		transition-delay: 500ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(6){
+		transition-delay: 550ms;
+	}
+	nav.small-screen > div >ul > li:nth-child(7){
+		transition-delay: 600ms;
+	}
+	nav.small-screen > div >ul > li> a{
+		line-height:17px;
+	}
+	nav.big-screen{
+		display:none;
+	}
+	/*导航结束*/
+	/*banner开始*/
+	div.banner{
+		width:100%;
+		height:376px;
+	}
+	div.banner > ul > li > .bigimg{
+		position:absolute;
+		left:50%;
+		bottom:0;
+		margin-left:-250px;
+		width:500px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(1){
+		font-size:20px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(2){
+		font-size:32px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(1){
+		font-size:30px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(2){
+		font-size:46px;
+	}
+	div.banner > ul > li:nth-child(3)>div> span{
+		font-size:32px;
+	}
+	/*banner结束*/
+	/*图片列表开始*/
+	.imglist a{
+		width:100%;
+	}
+	.imglist a:first-child{
+		background-image:url("../img/111.jpg");
+		border-right:0;
+		border-bottom:0;
+	}
+	.imglist a:nth-child(2){
+		background-image:url("../img/222.jpg");
+		border-right:0;
+		border-bottom:0;
+	}
+	.imglist a:nth-child(3){
+		background-image:url("../img/333.jpg");
+		border-right:0;
+		border-bottom:0;
+	}
+	.imglist a:last-child{
+		background-image:url("../img/444.jpg");
+		border-right:0;
+	}
+	/*图片列表结束*/
+	/*底部开始*/
+	div[class="foot-box"]{
+		width:100%;
+	}
+	div[class="foot-box"]{
+		box-sizing:border-box;
+	}
+	/*快捷方式开始*/
+	 .quick{
+        width:96%;
+        height:auto;
+        overflow:hidden;
+        margin:0 auto;
+        padding:16px;
+        border-size:border-box;
+        /* background:red; */
+    }
+    .quick > div{
+        float:left;
+        width:100%;
+        height:auto;
+        border-bottom:1px solid #ccc;
+    }
+    .quick > div > ul.active {
+    	display:block;
+    }
+    .quick > div > ul {
+        height:auto;
+        line-height:25px;
+        display:none;
+        padding:10px;
+    }
+    h4{
+        height:39px;
+        font-size:12px;
+        font-weight:normal;
+        line-height:39px;
+        margin:6px 0;
+        
+        
+    }
+    h4 span:first-child{
+        float:left;
+    }
+    h4 span:last-child{
+        float:right;
+        box-sizing:border-box;
+        font-weight:bold;
+        font-size:14px;
+        cursor: pointer;
+        transform: rotate(0deg);
+        transition:all 0.2s;
+    }
+    h4 span:last-child.active{
+    	transform: rotate(45deg);
+    	transition: all 0.2s;
+    }
+    .quick > div > ul > li a{
+        line-height:20px;
+        font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size:10px;
+        color:#000;
+    }
+	/*快捷方式结束*/
+	/*最后开始*/
+	div[class="two"] > span{
+		width:100%;
+		float:left;	
+	}
+	
+	div[class="two"] > ul{
+		/*width:50%;*/
+		float:left;
+	}
+	/*最后结束*/
+	/*底部结束*/
+}
+/*中屏代码[735,1068]*/
+@media screen and (min-width:735px) and (max-width:1068px){
+	/*头部开始*/
+	header span{
+		width:100%;
+		padding:10px 20px 0 20px;
+		box-sizing:border-box;
+	}
+	/*头部结束*/
+	/*导航开始*/
+	nav.big-screen > div{
+		width:100%;
+		height:100%;
+		margin:0 auto;
+		text-align:justify;
+	}
+	nav.small-screen{
+		display:none;
+	}
+	/*导航结束*/
+	/*banner开始*/
+	div.banner{
+		width:100%;
+		height:456px;
+	}
+	div.banner > ul > li > .bigimg{
+		position:absolute;
+		left:50%;
+		bottom:0;
+		margin-left:-350px;
+		width:700px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(1){
+		font-size:26px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(2){
+		font-size:38px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(1){
+		font-size:30px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(2){
+		font-size:46px;
+	}
+	div.banner > ul > li:nth-child(3)>div> span{
+		font-size:38px;
+	}
+	/*banner结束*/
+	/*图片列表开始*/
+	.imglist a{
+		width:50%;
+	}
+	.imglist a:first-child{
+		background-image:url("../img/11.jpg");
+		border-bottom:0;
+	}
+	.imglist a:nth-child(2){
+		background-image:url("../img/22.jpg");
+		border-right:0;
+		border-bottom:0;
+	}
+	.imglist a:nth-child(3){
+		background-image:url("../img/33.jpg");
+	}
+	.imglist a:last-child{
+		background-image:url("../img/44.jpg");
+		border-right:0;
+	}
+	/*图片列表结束*/
+	/*底部开始*/
+	div[class="foot-box"]{
+		width:100%;
+	}
+	div[class="foot-box"]{
+		box-sizing:border-box;
+	}
+	/*快捷方式开始*/
+	.quick{
+        width:100%;
+        height:200px;
+        margin:0px auto;
+        margin-top:20px;
+        padding-left:20px;
+        /* background:red; */
+    }
+    .quick > div{
+        float:left;
+        width:20%;
+        height:auto;
+    }
+    .quick > div h4{
+        height:15px;
+        margin-bottom:6px;
+        font-size: 14px;
+    }
+    .quick > div > ul > li{
+        height:15px;
+        line-height:25px;
+    }
+    .quick > div > ul > li a{
+        line-height:20px;
+        font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size:12px;
+        color:#000;
+
+    }
+    .quick > div > h4 ~ h4{
+        margin-top:20px;
+    }
+    .quick > div > h4 span:last-child{
+        display:none;
+    }
+	/*快捷方式结束*/
+	/*最后开始*/
+	div[class="two"] > span{
+		width:40%;
+		float:left;	
+	}
+	div.china{
+		position:absolute;
+		top:0;
+		right:0;
+	}
+	div[class="two"] > ul{
+		/*width:50%;*/
+		float:left;
+	}
+	/*最后结束*/
+	/*底部结束*/
+}
+/*大屏代码[1068,-]*/
+@media screen and (min-width:1068px){
+	/*头部开始*/
+	header span{
+		width:976px;
+	}
+	/*头部结束*/
+	/*导航开始*/
+	nav.big-screen > div{
+		width:1000px;
+		height:100%;
+		margin:0 auto;
+		text-align:justify;
+	}
+	nav.small-screen{
+		display:none;
+	}
+	/*导航结束*/
+	/*banner开始*/
+	div.banner{
+		width:100%;
+		height:496px;
+	}
+	div.banner > ul > li > .bigimg{
+		position:absolute;
+		left:50%;
+		bottom:0;
+		margin-left:-400px;
+		width:800px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(1){
+		font-size:30px;
+	}
+	div.banner > ul > li:nth-child(1)>div> span:nth-child(2){
+		font-size:46px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(1){
+		font-size:30px;
+	}
+	div.banner > ul > li:nth-child(2)>div> span:nth-child(2){
+		font-size:46px;
+	}
+	div.banner > ul > li:nth-child(3)>div> > span{
+		font-size:44px;
+	}
+	/*banner结束*/
+	/*图片列表开始*/
+	.imglist > a{
+		width:25%;
+	}
+	.imglist > a:first-child{
+		background-image:url("../img/1.jpg");
+	}
+	.imglist > a:nth-child(2){
+		background-image:url("../img/2.jpg");
+	}
+	.imglist > a:nth-child(3){
+		background-image:url("../img/3.jpg");
+	}
+	.imglist > a:last-child{
+		background-image:url("../img/4.jpg");
+		border-right:0;
+	}
+	/*图片列表结束*/
+	/*底部开始*/
+	div[class="foot-box"]{
+		width:980px;
+	}
+	/*快捷方式开始*/
+	.quick{
+        width:980px;
+        height:200px;
+        margin:0px auto;
+        margin-top:20px;
+        /* background:red; */
+    }
+    .quick > div{
+        float:left;
+        width:20%;
+        height:auto;
+    }
+    .quick > div h4{
+        height:15px;
+        margin-bottom:6px;
+        font-size: 14px;
+    }
+    .quick > div > ul > li{
+        height:15px;
+        line-height:25px;
+    }
+    .quick > div > ul > li a{
+        line-height:20px;
+        font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size:12px;
+        color:#000;
+
+    }
+    .quick > div > h4 ~ h4{
+        margin-top:20px;
+    }
+    .quick > div > h4 span:last-child{
+        display:none;
+    }
+	/*快捷方式结束*/
+	/*最后开始*/
+	div[class="two"] > span{
+		width:25%;	
+		float:left;
+	}
+	div.china{
+		position:absolute;
+		top:0;
+		right:0;
+	}
+	div[class="two"] > ul{
+		float:left;
+	}
+	/*最后结束*/
+	/*底部结束*/
+}
+
+
+
+/*通用代码*/
+@font-face {
+  font-family: 'zn';
+  src: url('../iconfont/iconfont.eot');
+  src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../iconfont/iconfont.woff') format('woff'),
+  url('../iconfont/iconfont.ttf') format('truetype'),
+  url('../iconfont/iconfont.svg#iconfont') format('svg');
+}
+@keyframes move{
+	0%{
+		width:0%;
+	}
+	100%{
+		width:100%;
+	}
+}
+@keyframes one{
+	0%{
+		transform:translate(0) scale(1);
+	}
+	100%{
+		transform:translate(-7%) scale(0.8);
+	}
+}
+@keyframes two{
+	0%{
+		transform:translate(-7%) scale(0.8);
+	}
+	100%{
+		transform:translate(0) scale(1);
+	}
+}
+@keyframes three{
+	0%{
+		transform:translate(100%);
+	}
+	100%{
+		transform:translate(0%);
+	}
+}
+@keyframes four{
+	0%{
+		transform:translate(0%);
+	}
+	100%{
+		transform:translate(100%);
+	}
+}
+/*头部开始*/
+header{
+		width:100%;
+		height:40px;
+		background:#444;
+}
+header span{
+	display:block;
+	height:30px;
+	margin:0 auto;
+	font-size:12px;
+	color:#a8a8aa;
+	text-align:right;
+	padding-top:10px;
+}
+/*头部结束*/
+/*导航开始*/
+*{
+	font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","Apple Legacy Chevron","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+}
+nav.big-screen,nav.small-screen{
+		width:100%;
+		height:44px;
+		background:rgb(0,0,0);
+	}
+nav.big-screen > div:after,nav.small-screen > div:after{
+	content:"";
+	display:inline-block;
+	width:100%;
+}
+nav.big-screen > div > a,nav.small-screen > div  a{
+	display:inline-block;
+	padding:10px 10px 0;
+	color:#fff;
+	font-size: 14px;
+}
+nav.big-screen > div > a:hover,nav.small-screen > div  a:hover{
+	color:#888;
+}
+span.iconfont{
+	font-family:"zn" !important;
+	font-size:20px;font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+/*导航结束*/
+/*banner开始*/
+div.banner{
+	position:relative;
+	overflow:hidden;
+}
+div[class|=btn]{
+	height:100%;
+	width:20%;
+	z-index:1000;
+	position:absolute;
+	top:0;	
+}
+div[class="btn-left"]{
+	left:0;
+}
+div[class="btn-left"]:hover #left{
+	background:rgba(188,188,188,0.25);
+	color:#848484;
+}
+div[class="btn-right"]{
+	right:0;
+}
+div[id=right],div[id=left]{
+	transition:all 0.3s linear;
+}
+div[class="btn-right"]:hover #right{
+	background:rgba(188,188,188,0.25);
+	color:#848484;
+}
+div[class="btn-left"] > div{
+	width:64px;
+	height:64px;
+	background:rgba(0,0,0,0);
+	border-radius:50%;
+	text-align:center;
+	line-height:64px;
+	font-size:36px;
+	font-family:"宋体";
+	color:rgba(255,255,255,0);
+	position:absolute;
+	top:40%;
+	left:5%;
+}
+div[class="btn-right"] > div{
+	width:64px;
+	height:64px;
+	background:rgba(0,0,0,0);
+	border-radius:50%;
+	text-align:center;
+	line-height:64px;
+	font-size:36px;
+	font-family:"宋体";
+	color:rgba(255,255,255,0);
+	position:absolute;
+	top:40%;
+	right:5%;
+}
+div.line{
+	width:100%;
+	height:2px;
+	z-index:3;
+	position:absolute;
+	left:0;
+	bottom:10%;
+	z-index: 1000;
+}
+div.line > ul{
+	width:180px;
+	height:100%;
+	margin:0 auto;
+}
+div.line > ul > li{
+	float:left;
+	width:50px;
+	height:100%;
+	margin:1px 5px 2px 5px;
+	background:#fff;
+} 
+div.line > ul > li > div{
+	width:0%;
+	height:100%;
+	background:#7f7f7f;
+}
+div.line > ul > li > div.show{
+	width:100%;
+}
+div.line > ul > li > div.active{
+	animation: move 2s linear backwards;
+}
+div.banner > ul{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+div.banner > ul > li{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;		
+	display:none;
+	z-index:10;
+}
+div.banner > ul > li.three{
+	display:block;
+	animation: three 0.5s linear;
+	z-index:20;
+}
+div.banner > ul > li.four{
+	display:block;
+	animation: four 0.5s linear forwards;
+	z-index:20;
+}
+div.banner > ul > li.one{
+	display:block;
+}
+div.banner > ul > li.one .bigimg{
+	animation: one 0.5s linear;
+}
+div.banner > ul > li.two{
+	display:block;
+}
+div.banner > ul > li.two .bigimg{
+	animation: two 0.5s linear;
+}
+div.banner > ul > li.active{
+	display:block;
+}
+div.banner > ul > li:nth-child(1){
+	background-color:#0a0a0a;
+}
+div.banner > ul > li:nth-child(1)> div >span:nth-child(1){
+	display:block;
+	height:8%;
+	font-weight:bold;
+	color:#fff;
+	position:absolute;
+	left:43%;
+	top:5%;
+	z-index: 30;
+}
+div.banner > ul > li:nth-child(1)> div > span:nth-child(2){
+	display:block;
+	height:13%;
+	font-weight:bold;
+	color:#fff;
+	position:absolute;
+	left:42%;
+	top:12%;
+	z-index: 30;
+}
+div.banner > ul > li:nth-child(2){
+	z-index:12;
+	background-color:#fff;
+}
+div.banner > ul > li:nth-child(2) > div > span:nth-child(1){
+	display:block;
+	width:100%;
+	height:8%;
+	text-align:center;
+	letter-spacing:0px;
+	font-weight:bold;
+	color:#000;
+	position:absolute;
+	left:0;
+	top:5%;
+	z-index:30x;
+}
+div.banner > ul > li:nth-child(2)> div >span:nth-child(2){
+	display:block;
+	width:100%;
+	height:13%;
+	letter-spacing:1px;
+	text-align:center;
+	font-weight:bold;
+	color:#000;
+	position:absolute;
+	left:0;
+	top:12%;
+	z-index:30x;
+}
+div.banner > ul > li:nth-child(3){
+	background-color:#f3f3f3;
+}
+div.banner > ul > li:nth-child(3) > div > img{
+	display:block;
+	height:10%;
+	margin-left:41%;
+	position:absolute;
+	left:0;
+	top:5%;
+	z-index:30;
+}
+div.banner > ul > li:nth-child(3) > div > span{
+	display:block;
+	width:100%;
+	height:13%;
+	letter-spacing:1px;
+	text-align:center;
+	font-weight:bold;
+	color:#000;
+	position:absolute;
+	left:0;
+	bottom:10%;
+	z-index:30;
+}
+/*banner结束*/
+/*图片列表开始*/
+.imglist{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.imglist > a{
+	display:block;
+	float:left;
+	height:200px;
+	border-top:2px solid #fff;
+	border-right:2px solid #fff;
+	border-bottom:2px solid #fff;
+	box-sizing:border-box;
+	background-position:center center;
+}
+/*图片列表结束*/
+/*底部开始*/
+footer{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	background-color:#f2f2f2;
+}
+div[class="foot-box"]{
+	height:auto;
+	overflow:hidden;
+	padding:0 22px 0 22px;
+	margin:0 auto;
+}
+/*提示开始*/
+div[class="point"]{
+	width:100%;
+	height:auto;
+	padding:17px 0 11px;
+	border-bottom:1px solid #d6d6d6;
+	overflow:hidden;
+}
+div[class="point"] p{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding:0 0 4px 0;
+	font-size:11px;
+	color:#888;
+	font-weight:400;
+}
+/*提示结束*/
+/*快捷方式开始*/
+/*快捷方式结束*/
+/*最后开始*/
+div[class="lastfoot1"]{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding:34px 0 21px 0;
+}
+div[class="one"]{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding-bottom:6px;
+	border-bottom:1px solid #d6d6d6;
+	margin-bottom:7px;
+}
+div[class="one"] > p{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	font-size:10px;
+	color:#888;
+	font-weight:400;
+}
+div[class="two"]{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+div.china{
+	width:50px;
+	height:16px;
+}
+div.china > img{
+	float:left;
+	width:16px;
+	height:16px;
+	margin-right:5px;
+}
+div.china > a{
+	display:block;
+	float:left;
+	font-size:11px;
+}
+div[class="one"] p a{
+	color:#0070c9;
+}
+div[class="two"] > span{
+	display:block;
+	height:auto;
+	overflow:hidden;
+	margin:3px 30px 0 0;
+	font-size:11px;
+	color:#888;
+}
+div[class="two"] > ul{
+	height:auto;
+	overflow:hidden;
+	margin:3px 30px 0 0;
+}
+div[class="two"] > ul > li{
+	float:left;
+	width:50px;
+	height:17px;
+	padding:0 5px 0 5px;
+	border-right:1px solid #d6d6d6;
+	font-size:10px;
+	text-align:center;
+}
+div[class="two"] > ul > li:last-child{
+	border:0;
+}
+div[class="two"] > ul > li > a{
+	color:#333;
+}
+p[class="lastfoot2"]{
+	width:100%;
+	height:auto;
+	color:#888;
+	font-size:11px;
+	margin:-20px 0 20px 0;
+}
+/*最后结束*/
+/*底部结束*/
